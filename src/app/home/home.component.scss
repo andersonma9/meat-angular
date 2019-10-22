@@ -1,0 +1,28 @@
+$width: 100%;
+.card {
+    margin: auto;
+    width: $width*0.9;
+    
+}
+
+#cardTitle {
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+#cardContent {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 1.4rem;
+
+    
+}
+
+.restButton {
+    display: inline-block;
+    padding-top: 12px;
+    width: 12rem;
+    height: 4rem;
+    font-size: 1.4rem;
+   ;
+}

@@ -1,18 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApplicationMenusComponent } from './application-menus/application-menus.component';
+import { SideMenuComponent } from './application-menus/side-menu/side-menu.component';
+import { MaterialModule } from './material/material.module';
+import { ResponsiveService } from './responsive.service';
+import { RestaurantesComponent } from './restaurantes/restaurantes.component';
+import { HomeComponent } from './home/home.component';
+import { SobreComponent } from './sobre/sobre.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ApplicationMenusComponent,
+    SideMenuComponent,
+    RestaurantesComponent,
+    HomeComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ResponsiveService, SideMenuComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

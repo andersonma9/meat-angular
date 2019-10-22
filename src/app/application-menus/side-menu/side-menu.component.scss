@@ -1,0 +1,38 @@
+// sidebar
+.sidenavigation {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+// side content
+
+.sideNav {
+    position: absolute;
+    background: #b71c1c;
+    width: 250px;
+    height: 100%;
+}
+
+.expansionPanel {
+    box-shadow: none;
+    background-color: transparent;
+    color: white;
+}
+
+
+mat-expansion-panel {
+    // color: white;
+    background-color: white;
+    a {
+        opacity: 1;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.routerOutlet {
+    padding: 1.2rem;
+}

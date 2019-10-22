@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="navigation">
+    <span>
+      <button (click)="sideContentToggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a mat-button [routerLink]="['']">MEAT</a>
+      <a *ngIf="mediumScreen" mat-button [routerLink]="['/restaurantes']" routerLinkActive="active" >Restaurantes</a>
+      <a *ngIf="mediumScreen" [routerLink] = "['/sobre']" mat-button href="#">Sobre</a>
+    </span>
+    <div>
+      <a mat-button href="#">Olá, Usuário</a>
+      |
+      <a mat-button href="#">Logout</a>
+    </div>
+  </mat-toolbar-row>
+  
+  <mat-toolbar-row id="secondaryRow" *ngIf="!smallScreen">
+      <mat-divider vertical></mat-divider>
+        <a mat-button [routerLink]="['/restaurantes']">Restaurantes</a>
+        <a mat-button [routerLink] = "['/sobre']">Sobre</a>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<app-side-menu [opened]="opened" [mode] = "mode"></app-side-menu>
