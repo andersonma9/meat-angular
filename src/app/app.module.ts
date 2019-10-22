@@ -12,6 +12,9 @@ import { ResponsiveService } from './responsive.service';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { HomeComponent } from './home/home.component';
 import { SobreComponent } from './sobre/sobre.component';
+import { DetalhesComponent } from './restaurantes/detalhes/detalhes.component';
+import { MenuComponent } from './restaurantes/detalhes/menu/menu.component';
+import { AvaliacoesComponent } from './restaurantes/detalhes/avaliacoes/avaliacoes.component';
 
 
 
@@ -22,7 +25,10 @@ import { SobreComponent } from './sobre/sobre.component';
     SideMenuComponent,
     RestaurantesComponent,
     HomeComponent,
-    SobreComponent
+    SobreComponent,
+    DetalhesComponent,
+    MenuComponent,
+    AvaliacoesComponent
   ],
   imports: [
     BrowserModule,

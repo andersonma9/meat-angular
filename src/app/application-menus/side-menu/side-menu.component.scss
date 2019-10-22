@@ -31,6 +31,9 @@ mat-expansion-panel {
         width: 100%;
         text-align: left;
     }
+    a:active {
+        background: #d50000;
+    }
 }
 
 .routerOutlet {

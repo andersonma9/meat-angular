@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
@@ -11,6 +11,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 const MaterialImports = [
@@ -22,7 +25,11 @@ const MaterialImports = [
   MatDividerModule,
   MatListModule,
   MatExpansionModule,
-  MatCardModule
+  MatCardModule,
+  FlexLayoutModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatTabsModule
 ];
 
 
