@@ -1,1 +1,15 @@
-<p>menu works!</p>
+<div id="itensContainer" fxLayout="row" fxLayout.lt-md="column">
+  <div fxFlex="55" fxFlexOrder.lt-md="2" >
+    <app-itens></app-itens>
+    <app-itens></app-itens>
+    <app-itens></app-itens>
+    <app-itens></app-itens>
+    <app-itens></app-itens>
+    <app-itens></app-itens>
+    <app-itens></app-itens>
+  </div>
+
+  <div fxFlexOffset.gt-sm="2" fxFlex="43" fxFlexOrder.lt-md="1" style="margin-bottom: 15px;">
+    <app-carrinho></app-carrinho>
+  </div>
+</div>

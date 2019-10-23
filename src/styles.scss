@@ -13,7 +13,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $meat-material-primary: mat-palette($mat-red, 900);
-$meat-material-accent: mat-palette($mat-gray, 300);
+$meat-material-accent: mat-palette($mat-gray, 400);
 
 // The warn palette is optional (defaults to red).
 $meat-material-warn: mat-palette($mat-brown);

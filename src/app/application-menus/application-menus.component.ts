@@ -23,7 +23,7 @@ export class ApplicationMenusComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this._responsiveService.checkScreen(556).subscribe(breakpoint => {
+    this._responsiveService.checkScreen(600).subscribe(breakpoint => {
       this.smallScreen = breakpoint.matches;
       if (!this.smallScreen) {
         this.opened = false;
@@ -31,15 +31,18 @@ export class ApplicationMenusComponent implements OnInit {
       }
     });
 
-    this._responsiveService.checkScreen(768).subscribe(breakpoint => {
+    this._responsiveService.checkScreen(960).subscribe(breakpoint => {
       this.mediumScreen = breakpoint.matches;
       if (!this.mediumScreen) {
         this.opened = false;
         this.mode = 'over'
+      } else if (this.mediumScreen) {
+        this.opened = true;
+        this.mode = 'side'
       }
     });
 
-    this._responsiveService.checkScreen(992).subscribe(breakpoint => {
+    this._responsiveService.checkScreen(1280).subscribe(breakpoint => {
       this.largeScreen = breakpoint.matches;
       if (this.largeScreen) {
         this.opened = true;
@@ -47,7 +50,7 @@ export class ApplicationMenusComponent implements OnInit {
       }
     });
 
-    this._responsiveService.checkScreen(1200).subscribe(breakpoint => {
+    this._responsiveService.checkScreen(1920).subscribe(breakpoint => {
       this.xLargeScreen = breakpoint.matches;
       if (this.xLargeScreen) {
         this.opened = true;

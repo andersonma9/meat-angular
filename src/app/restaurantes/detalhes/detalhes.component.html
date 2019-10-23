@@ -1,31 +1,11 @@
-<!-- <div fxLayout="column" class="restDetails" fxFlex="100" fxFlex.gt-md="80">
-  <mat-card fxLayout="row" style="border: 1px solid red;">
-    <div style="justify-content: ;">
-      <img
-        src="https://picsum.photos/500"
-        alt=""
-        style="border: 1px solid blue; width: 120px;"
-      />
-    </div>
-    <mat-card-header
-      fxLayout="row"
-      fxLayout.lt-md="column"
-      fxLayoutAlign="space-between"
-      style="border: 1px solid red;"
-    >
-      <mat-card-title style="border: 1px solid red;">
-        Nome do restaurante
-      </mat-card-title>
-    </mat-card-header>
-  </mat-card>
-  <router-outlet></router-outlet>
-</div>
- -->
-
-<div style="margin: auto;" fxLayout="column" fxFlex="100" fxFlex.gt-md="60">
-  <mat-card fxLayout="row wrap" fxLayoutGap="15px grid" fxLayout.lt-md="column">
-    <img src="https://picsum.photos/200" alt="" fxFlexAlign="center" />
-    <div fxLayout="column">
+<div style="margin: auto;" fxLayout="column" fxFlex="70" fxFlex.lt-lg="100">
+  <mat-card
+    fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutAlign.lt-md="center center"
+  >
+    <img style="border-radius: 50px 5px 5px 5px;" src="https://picsum.photos/200" alt="" fxFlexAlign="center" />
+    <div fxLayout="column" style="padding: 0 0 0 10px;">
       <mat-card-header fxFlex="calc(45%-15px)">
         <mat-card-title>
           Nome do Restaurante
@@ -45,24 +25,23 @@
     </div>
   </mat-card>
 
-  <nav mat-tab-nav-bar style="margin: 20px auto 0px auto;">
+  <nav mat-tab-nav-bar style="margin: 5px auto 0px auto; width: 100%; background-color: white; ">
     <a
-    style="margin: 0 5px 0 5px;"
+      fxFlex="100"
+      style="margin-right: auto;"
       color="primary"
-      active
       mat-stroked-button
       mat-tab-link
       [routerLink]="['menu']"
-      >Menu</a
-    >
+      >Menu</a>
     <a
+      fxFlex="100"
+      style="margin-left: auto;"
       color="primary"
       mat-stroked-button
       mat-tab-link
-      mat-tab-link
       [routerLink]="['avaliacoes']"
-      >Avaliações</a
-    >
+      >Avaliações</a>
   </nav>
-  <router-outlet style="margin: 0 -15px 0 0; border: 1px solid red;"></router-outlet>
+  <router-outlet></router-outlet>
 </div>

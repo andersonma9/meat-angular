@@ -6,6 +6,7 @@ import { SobreComponent } from './sobre/sobre.component';
 import { DetalhesComponent } from './restaurantes/detalhes/detalhes.component';
 import { MenuComponent } from './restaurantes/detalhes/menu/menu.component';
 import { AvaliacoesComponent } from './restaurantes/detalhes/avaliacoes/avaliacoes.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,9 @@ const routes: Routes = [
       {path: 'menu', component: MenuComponent},
       {path: 'avaliacoes', component: AvaliacoesComponent}
     ]
+  },
+  {
+    path: 'pedido', component: PedidoComponent
   },
   {
     path: 'restaurantes', component: RestaurantesComponent
