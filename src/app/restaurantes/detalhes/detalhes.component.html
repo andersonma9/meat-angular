@@ -45,10 +45,24 @@
     </div>
   </mat-card>
 
-  <mat-tab-group fxFlex="100" fxFlex.gt-md="60" style="margin-right: -15px; margin-top: 15px;">
-    <mat-tab [routerLink]="['detalhes/menu']" label="First"></mat-tab>
-    <mat-tab [routerLink]="['detalhes/avaliacoes']" label="Second"> <router-outlet></router-outlet> </mat-tab>
-  </mat-tab-group>
-
-  
+  <nav mat-tab-nav-bar style="margin: 20px auto 0px auto;">
+    <a
+    style="margin: 0 5px 0 5px;"
+      color="primary"
+      active
+      mat-stroked-button
+      mat-tab-link
+      [routerLink]="['menu']"
+      >Menu</a
+    >
+    <a
+      color="primary"
+      mat-stroked-button
+      mat-tab-link
+      mat-tab-link
+      [routerLink]="['avaliacoes']"
+      >Avaliações</a
+    >
+  </nav>
+  <router-outlet style="margin: 0 -15px 0 0; border: 1px solid red;"></router-outlet>
 </div>
