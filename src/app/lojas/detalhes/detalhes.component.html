@@ -32,8 +32,9 @@
       color="primary"
       mat-stroked-button
       mat-tab-link
-      [routerLink]="['menu']"
-      >Menu</a>
+      [routerLink]="['itens']"
+      routerLinkActive="active"
+      >Produtos</a>
     <a
       fxFlex="100"
       style="margin-left: auto;"
@@ -41,6 +42,7 @@
       mat-stroked-button
       mat-tab-link
       [routerLink]="['avaliacoes']"
+      routerLinkActive="active"
       >Avaliações</a>
   </nav>
   <router-outlet></router-outlet>

@@ -1,16 +1,40 @@
 <div fxLayout="column">
   <div id="campoCep">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Digite seu CEP</mat-label>
       <input id="inputCep" matInput placeholder="Ex: 12345-678" />
     </mat-form-field>
   </div>
-  <div style="border: 1px solid red">
-    <div >
-      <div style="border: 1px solid red;" class="mat-h2">Informe seus dados</div>
-      <div id="camposForm">
-          a
+  <div>
+    <div>
+      <div class="mat-h2">Seus dados</div>
+      <mat-divider></mat-divider>
+      <div
+        id="dadosForm"
+        fxLayout="row wrap"
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-between"
+      >
+        <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input type="text" matInput />
+          <mat-hint>Informe seu nome</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+          <mat-label>Sobrenome</mat-label>
+          <input type="text" matInput />
+          <mat-hint>Informe seu sobrenome</mat-hint>
+        </mat-form-field>
+        <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input type="text" matInput />
+          <mat-hint>Confirme seu e-mail</mat-hint>
+        </mat-form-field>
       </div>
+      <div class="mat-h2">Endereço de entrega</div>
+      <mat-divider></mat-divider>
+      
     </div>
   </div>
 </div>

@@ -9,18 +9,21 @@ import { ApplicationMenusComponent } from './application-menus/application-menus
 import { SideMenuComponent } from './application-menus/side-menu/side-menu.component';
 import { MaterialModule } from './material/material.module';
 import { ResponsiveService } from './responsive.service';
-import { RestaurantesComponent } from './restaurantes/restaurantes.component';
+import { LojasComponent } from './lojas/lojas.component';
 import { HomeComponent } from './home/home.component';
 import { SobreComponent } from './sobre/sobre.component';
-import { DetalhesComponent } from './restaurantes/detalhes/detalhes.component';
-import { MenuComponent } from './restaurantes/detalhes/menu/menu.component';
-import { AvaliacoesComponent } from './restaurantes/detalhes/avaliacoes/avaliacoes.component';
-import { ItensComponent } from './restaurantes/detalhes/menu/itens/itens.component';
-import { CarrinhoComponent } from './restaurantes/detalhes/menu/carrinho/carrinho.component';
+import { DetalhesComponent } from './lojas/detalhes/detalhes.component';
+
+import { AvaliacoesComponent } from './lojas/detalhes/avaliacoes/avaliacoes.component';
+
 import { PedidoComponent } from './pedido/pedido.component';
 import { FormComponent } from './pedido/form/form.component';
 import { ItensPedidoComponent } from './pedido/itens-pedido/itens-pedido.component';
 import { FechamentoComponent } from './pedido/fechamento/fechamento.component';
+import { MenuComponent } from './lojas/detalhes/itens/lista.component';
+import { ItensComponent } from './lojas/detalhes/itens/itens/itens.component';
+import { CarrinhoComponent } from './lojas/detalhes/itens/carrinho/carrinho.component';
+import { InputComponent } from './shared/input/input.component';
 
 
 
@@ -29,7 +32,7 @@ import { FechamentoComponent } from './pedido/fechamento/fechamento.component';
     AppComponent,
     ApplicationMenusComponent,
     SideMenuComponent,
-    RestaurantesComponent,
+    LojasComponent,
     HomeComponent,
     SobreComponent,
     DetalhesComponent,
@@ -40,7 +43,8 @@ import { FechamentoComponent } from './pedido/fechamento/fechamento.component';
     PedidoComponent,
     FormComponent,
     ItensPedidoComponent,
-    FechamentoComponent
+    FechamentoComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule,

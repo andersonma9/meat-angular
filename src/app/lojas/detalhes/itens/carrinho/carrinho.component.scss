@@ -2,12 +2,16 @@
 //     margin-top: 10px;
 // }
 
-#removeButton {
-    width: 20px;
-    height: 20px;
+.removeButton {
+    background: #B71C1C;
 }
 
 #confirmButton {
     background: #1b5e20;
+    color: white;
+}
+
+#clearButton {
+    background: #B71C1C;
     color: white;
 }

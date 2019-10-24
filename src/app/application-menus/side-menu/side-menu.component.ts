@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-side-menu",
@@ -10,9 +10,20 @@ export class SideMenuComponent implements OnInit {
 
   @Input() mode: string;
 
+  @Output() reflectOpened: EventEmitter<boolean> = new EventEmitter()
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
-  
+  clickHandler() {
+    // console.log(this.opened)
+    if(this.opened === true) {
+      this.opened = false;
+      this.reflectOpened.emit(this.opened)
+      console.log(this.opened)
+    }
+  }
 }

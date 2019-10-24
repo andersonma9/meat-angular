@@ -8,7 +8,11 @@
     <mat-card-content id="conteudo">
       <div class="mat-title" style="margin: 10px 0 10px 0;">
         Item: x1
-        <div class="mat-body-2" style="margin-top: auto; margin-bottom: auto;" fxFlexOffset="auto">
+        <div
+          class="mat-body-2"
+          style="margin-top: auto; margin-bottom: auto;"
+          fxFlexOffset="auto"
+        >
           R$ 15,00
         </div>
         <button
@@ -18,16 +22,22 @@
           isRoundButton
           mat-raised-button
           style="padding: 0;"
+          class="removeButton"
         >
           <mat-icon inline>clear</mat-icon>
         </button>
       </div>
       <div class="mat-title" style="margin: 10px 0 10px 0;">
         Item: x1
-        <div class="mat-body-2" style="margin-top: auto; margin-bottom: auto;" fxFlexOffset="auto">
+        <div
+          class="mat-body-2"
+          style="margin-top: auto; margin-bottom: auto;"
+          fxFlexOffset="auto"
+        >
           R$ 5,55
         </div>
         <button
+          class="removeButton"
           fxFlexOffset="auto"
           color="primary"
           isIconButton
@@ -40,10 +50,15 @@
       </div>
       <div class="mat-title" style="margin: 10px 0 10px 0;">
         Item: x1
-        <div class="mat-body-2" style="margin-top: auto; margin-bottom: auto;" fxFlexOffset="auto">
+        <div
+          class="mat-body-2"
+          style="margin-top: auto; margin-bottom: auto;"
+          fxFlexOffset="auto"
+        >
           R$ 9,50
         </div>
         <button
+          class="removeButton"
           fxFlexOffset="auto"
           color="primary"
           isIconButton
@@ -57,8 +72,10 @@
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-actions align="end">
-      <button  color="primary" mat-raised-button>Limpar</button>
-      <a [routerLink]="['/pedido']" id="confirmButton" mat-raised-button>Confirmar</a>
+      <button id="clearButton" mat-raised-button>Limpar</button>
+      <a [routerLink]="['/pedido']" id="confirmButton" mat-raised-button
+        >Confirmar</a
+      >
     </mat-card-actions>
   </mat-card>
 </div>

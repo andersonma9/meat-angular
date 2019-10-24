@@ -5,7 +5,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <a mat-button [routerLink]="['']">MEAT</a>
-      <a *ngIf="mediumScreen" mat-button [routerLink]="['/restaurantes']" routerLinkActive="active" >Restaurantes</a>
+      <a *ngIf="mediumScreen" mat-button [routerLink]="['/lojas']" routerLinkActive="active" >Lojas</a>
       <a *ngIf="mediumScreen" [routerLink] = "['/sobre']" mat-button href="#">Sobre</a>
     </span>
     <div>
@@ -17,9 +17,9 @@
   
   <mat-toolbar-row id="secondaryRow" *ngIf="!smallScreen">
       <mat-divider vertical></mat-divider>
-        <a mat-button [routerLink]="['/restaurantes']">Restaurantes</a>
+        <a mat-button [routerLink]="['/lojas']">Lojas</a>
         <a mat-button [routerLink] = "['/sobre']">Sobre</a>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<app-side-menu [opened]="opened" [mode] = "mode"></app-side-menu>
+<app-side-menu [opened]="opened" [mode] = "mode" (reflectOpened)="reflectOpened()"></app-side-menu>
