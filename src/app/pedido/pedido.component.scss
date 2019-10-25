@@ -4,5 +4,23 @@
 }
 
 #mainFormField {
+    height: auto;
     margin: auto;
+    padding-bottom: 50px;
+    // margin-bottom: 50px;
+}
+
+#stepper {
+    background: #f5f5f5;
+}
+
+.btnAcao {
+    display: flex;
+    margin-top: 25px;
+}
+
+.botaoVoltar {
+    background: #B71C1C;
+    color: white;
+    margin-right: 5px;
 }

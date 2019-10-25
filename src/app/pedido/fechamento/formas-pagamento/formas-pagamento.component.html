@@ -1,0 +1,17 @@
+<div class="mat-h2">Selecione uma forma de pagamento</div>
+
+<mat-radio-group
+  [(ngModel)]="formaPagamento"
+  color="primary"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  aria-label="Select an option"
+  *ngFor="let forma of formasPagamento"
+>
+  <mat-radio-button
+    class="itens"
+    (click)="seeValue(forma.cod)"
+    [value]="forma.cod"
+    >{{ forma.nome }}</mat-radio-button
+  >
+</mat-radio-group>

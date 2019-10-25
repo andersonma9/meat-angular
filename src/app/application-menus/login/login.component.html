@@ -1,0 +1,34 @@
+<!-- {{ loginForm.value | json }} -->
+<h4 mat-dialog-tigle>
+  Bem-vindo! <br />
+  Por favor, faça login para continuar!
+</h4>
+<div mat-dialog-content>
+  <form [formGroup]="loginForm" autocomplete="off" autofill="off">
+    <div fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input formControlName="email" matInput />
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error>Campo obrigatório!</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input type="password" formControlName="senha" matInput />
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error>Campo obrigatório!</mat-error>
+      </mat-form-field>
+      <div fxLayout="row" style="margin-bottom: 5px">
+        <button id="loginButton" mat-raised-button color="primary">
+          Login
+        </button>
+        <button id="signUpButton" mat-raised-button color="accent">
+          Cadastre-se
+        </button>
+        <button id="recoveryButton" mat-raised-button>
+          Recuperar login
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

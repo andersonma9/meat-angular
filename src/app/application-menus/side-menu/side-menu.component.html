@@ -1,19 +1,15 @@
-<mat-drawer-container (click)= "clickHandler()" class="sidenavigation">
+<mat-drawer-container class="sidenavigation">
   <mat-drawer class="sideNav" [mode]="mode" [opened]="opened">
     <mat-accordion id="accordion">
       <mat-expansion-panel class="expansionPanel">
         <mat-expansion-panel-header>
           <mat-panel-title style="color: white;">
-            Gestão Loja
+            Gestão Lojas
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-button href="#">Rest 1</a>
+        <a mat-button href="#">Adicionar Loja</a>
         <mat-divider></mat-divider>
-        <a mat-button href="#">Rest 2</a>
-        <mat-divider></mat-divider>
-        <a mat-button href="#">Rest 3</a>
-        <mat-divider></mat-divider>
-        <a mat-button href="#">Rest 4</a>
+        <a mat-button href="#">Editar Loja</a>
         <mat-divider></mat-divider>
       </mat-expansion-panel>
 
@@ -23,18 +19,14 @@
             Gestão Usuário
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-button href="#">Rest 1</a>
+        <a mat-button href="#">Editar Dados</a>
         <mat-divider></mat-divider>
-        <a mat-button href="#">Rest 2</a>
-        <mat-divider></mat-divider>
-        <a mat-button href="#">Rest 3</a>
-        <mat-divider></mat-divider>
-        <a mat-button href="#">Rest 4</a>
+        <a mat-button href="#">Cadastrar Usuário</a>
         <mat-divider></mat-divider>
       </mat-expansion-panel>
     </mat-accordion>
   </mat-drawer>
-  <mat-drawer-content class="routerOutlet">
+  <mat-drawer-content (click)="clickHandler()" class="routerOutlet">
     <router-outlet> </router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,3 +1,5 @@
+<!-- {{ infoPedido.value | json }} -->
+
 <div fxLayout="column">
   <div id="campoCep">
     <mat-form-field appearance="outline">
@@ -6,35 +8,89 @@
     </mat-form-field>
   </div>
   <div>
-    <div>
-      <div class="mat-h2">Seus dados</div>
-      <mat-divider></mat-divider>
-      <div
-        id="dadosForm"
-        fxLayout="row wrap"
-        fxLayoutGap="10px"
-        fxLayoutAlign="space-between"
-      >
-        <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
-          <mat-label>Nome</mat-label>
-          <input type="text" matInput />
-          <mat-hint>Informe seu nome</mat-hint>
-        </mat-form-field>
+    <form [formGroup]="infoPedido">
+      <div>
+        <div
+          formGroupName="dadosCliente"
+          class="dadosForm"
+          fxLayout="row wrap"
+          fxLayout.lt-md="column"
+          fxLayoutGap="10px"
+          fxLayoutAlign="space-between"
+        >
+          <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input formControlName="nome" type="text" matInput />
+            <mat-hint>Informe seu nome</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
 
-        <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
-          <mat-label>Sobrenome</mat-label>
-          <input type="text" matInput />
-          <mat-hint>Informe seu sobrenome</mat-hint>
-        </mat-form-field>
-        <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
-          <mat-label>E-mail</mat-label>
-          <input type="text" matInput />
-          <mat-hint>Confirme seu e-mail</mat-hint>
-        </mat-form-field>
+          <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+            <mat-label>Sobrenome</mat-label>
+            <input formControlName="sobrenome" type="text" matInput />
+            <mat-hint>Informe seu sobrenome</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input formControlName="email" type="text" matInput />
+            <mat-hint>Confirme seu e-mail</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="mat-h2">Endereço de entrega</div>
+        <mat-divider></mat-divider>
+        <div
+          formGroupName="dadosEntrega"
+          class="dadosForm"
+          fxLayout="row wrap"
+          fxLayout.lt-md="column"
+          fxLayoutGap="10px"
+          fxLayoutAlign="space-between"
+        >
+          <mat-form-field fxFlex="calc(40% - 10px)" appearance="outline">
+            <mat-label>Rua</mat-label>
+            <input formControlName="rua" type="text" matInput />
+            <mat-hint>Diga onde devemos entregar</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="calc(15% - 10px)" appearance="outline">
+            <mat-label>Número</mat-label>
+            <input formControlName="numero" type="text" matInput />
+            <mat-hint>Informe o número</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>Complemento</mat-label>
+            <input formControlName="complemento" type="text" matInput />
+            <mat-hint>Agora precisamos de uma referência</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="calc(35% - 10px)" appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input formControlName="cidade" type="text" matInput />
+            <mat-hint>Informe-nos sua cidade</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="calc(35% - 10px)" appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <input formControlName="bairro" type="text" matInput />
+            <mat-hint>Em qual bairro você está?</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+
+          <mat-form-field fxFlex="calc(30% - 10px)" appearance="outline">
+            <mat-label>UF</mat-label>
+            <input maxlength="2" formControlName="uf" type="text" matInput />
+            <mat-hint>Informe seu Estado</mat-hint>
+            <mat-error>Campo obrigatório!</mat-error>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="mat-h2">Endereço de entrega</div>
-      <mat-divider></mat-divider>
-      
-    </div>
+    </form>
   </div>
 </div>

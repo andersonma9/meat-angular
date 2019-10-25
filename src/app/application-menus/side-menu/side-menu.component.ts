@@ -23,7 +23,6 @@ export class SideMenuComponent implements OnInit {
     if(this.opened === true) {
       this.opened = false;
       this.reflectOpened.emit(this.opened)
-      console.log(this.opened)
     }
   }
 }

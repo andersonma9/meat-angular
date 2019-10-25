@@ -1,6 +1,12 @@
 import { Component, OnInit, ViewChild, NgZone } from "@angular/core";
 import { ResponsiveService } from "../responsive.service";
-import { SideMenuComponent } from "./side-menu/side-menu.component";
+// import { SideMenuComponent } from "./side-menu/side-menu.component";
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from "@angular/material/dialog";
+import { LoginComponent } from "./login/login.component";
 
 @Component({
   selector: "app-application-menus",
@@ -19,7 +25,8 @@ export class ApplicationMenusComponent implements OnInit {
   // tslint:disable-next-line: variable-name
   constructor(
     private _responsiveService: ResponsiveService,
-    private _zone: NgZone
+    private _zone: NgZone,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -57,12 +64,11 @@ export class ApplicationMenusComponent implements OnInit {
       }
     });
   }
-  
 
   sideContentToggle() {
     this._zone.run(() => {
       this.opened = !this.opened;
-      document.getElementById('side')
+      document.getElementById("side");
     });
   }
 
@@ -70,4 +76,13 @@ export class ApplicationMenusComponent implements OnInit {
     this.opened = false;
   }
 
+  abrirDialogoLogin(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: "350px",
+      data: {nome: "Anderson"}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed");
+    });
+  }
 }

@@ -8,10 +8,14 @@
       <a *ngIf="mediumScreen" mat-button [routerLink]="['/lojas']" routerLinkActive="active" >Lojas</a>
       <a *ngIf="mediumScreen" [routerLink] = "['/sobre']" mat-button href="#">Sobre</a>
     </span>
-    <div>
+    <!-- Adicionar NgIf pra caso o usuário exista -->
+    <!-- <div>
       <a mat-button href="#">Olá, Usuário</a>
       |
       <a mat-button href="#">Logout</a>
+    </div> -->
+    <div>
+      <button (click)="abrirDialogoLogin()" mat-button>Login</button>
     </div>
   </mat-toolbar-row>
   

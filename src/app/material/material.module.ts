@@ -14,6 +14,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 const MaterialImports = [
@@ -29,7 +33,11 @@ const MaterialImports = [
   FlexLayoutModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTabsModule
+  MatTabsModule,
+  MatTableModule,
+  MatRadioModule,
+  MatStepperModule,
+  MatDialogModule
 ];
 
 
