@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ResponsiveService } from "src/app/responsive.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-detalhes",
@@ -7,7 +8,13 @@ import { ResponsiveService } from "src/app/responsive.service";
   styleUrls: ["./detalhes.component.scss"]
 })
 export class DetalhesComponent implements OnInit {
-  constructor(private _responsiveService: ResponsiveService) {}
+  constructor(
+    private _responsiveService: ResponsiveService,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute
+  ) {}
+
+  idLoja;
 
   centerCardTitle() {
     return !this._responsiveService
@@ -16,6 +23,12 @@ export class DetalhesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.centerCardTitle();
+    // this.centerCardTitle();
+    // console.log(this._router)
+    // console.log(this._activatedRoute.snapshot.params)
+  }
+
+  setLoja() {
+    return this._activatedRoute.snapshot.params;
   }
 }

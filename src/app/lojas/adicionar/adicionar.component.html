@@ -1,0 +1,47 @@
+<!-- {{ dadosLoja.value | json }} -->
+
+<div fxLayout="column" fxFlex="70" fxFlex.lt-md="100" class="container">
+  <div class="mat-display-1">
+    Cadastrar uma nova loja
+  </div>
+  <mat-divider></mat-divider>
+  <form [formGroup]="dadosLoja">
+    <div
+      class="forms"
+      fxLayout="row wrap"
+      fxLayout.lt-md="column"
+      fxLayoutGap="10px"
+    >
+      <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
+        <mat-label>Nome Fantasia</mat-label>
+        <input formControlName="nomeFantasia" type="text" matInput />
+        <mat-hint>Esse é o nome como os seus clientes conhecem</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
+        <mat-label>Razão social</mat-label>
+        <input formControlName="razaoSocial" type="text" matInput />
+        <mat-hint
+          >Esse é o nome que consta nos deocumentos da sua empresa</mat-hint
+        >
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
+        <mat-label>CNPJ</mat-label>
+        <input
+          formControlName="cnpj"
+          (blur)="applyMask()"
+          type="text"
+          matInput
+        />
+        <mat-hint>Informe-nos o CNPJ da sua empresa (14 dígitos)</mat-hint>
+        <mat-error>CNPJ inválido</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="botoes">
+    <button class="clearButton" mat-raised-button>Cancelar</button>
+    <button (click)="cadastrarLoja()" mat-raised-button color="primary">
+      Confirmar
+    </button>
+  </div>
+</div>

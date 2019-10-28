@@ -7,9 +7,24 @@
             Gestão Lojas
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-button href="#">Adicionar Loja</a>
+        <a
+          mat-button
+          [routerLink]="['/lojas/adicionar']"
+          routerLinkActive="mat-accent"
+          >Adicionar Loja</a
+        >
         <mat-divider></mat-divider>
-        <a mat-button href="#">Editar Loja</a>
+        <mat-expansion-panel class="expansionPanel">
+          <mat-expansion-panel-header style="padding: 0 16px;">
+            <mat-panel-title style="color: white;">
+              Editar Loja
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div *ngFor="let loja of listaLojas">
+            <a mat-button [routerLink]="['/loja', loja.id, 'editar']" routerLinkActive="mat-accent" >{{ loja.nome }}</a>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-expansion-panel>
         <mat-divider></mat-divider>
       </mat-expansion-panel>
 

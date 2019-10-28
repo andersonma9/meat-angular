@@ -22,7 +22,7 @@
         <button id="loginButton" mat-raised-button color="primary">
           Login
         </button>
-        <button id="signUpButton" mat-raised-button color="accent">
+        <button (click)="fecharModalLogin()" [routerLink]="['/cadastro']" routerLinkActive="router-link-active"  id="signUpButton" mat-raised-button color="accent">
           Cadastre-se
         </button>
         <!-- <button id="recoveryButton" mat-raised-button>

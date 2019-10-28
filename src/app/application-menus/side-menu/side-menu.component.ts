@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ContentChild
+} from "@angular/core";
+import { DetalhesComponent } from "../../lojas/detalhes/detalhes.component";
 
 @Component({
   selector: "app-side-menu",
@@ -10,19 +18,26 @@ export class SideMenuComponent implements OnInit {
 
   @Input() mode: string;
 
-  @Output() reflectOpened: EventEmitter<boolean> = new EventEmitter()
+  @Output() reflectOpened: EventEmitter<boolean> = new EventEmitter();
+
+  @ContentChild(DetalhesComponent, { static: false })
+  private _lojaDetalhe: DetalhesComponent;
 
   constructor() {}
 
-  ngOnInit() {
-    
-  }
+  listaLojas: object[] = [  
+    { nome: "Loja 1", id: "1" },
+    { nome: "Loja 2", id: "2" },
+    { nome: "Loja 3", id: "3" }
+  ];
+
+  ngOnInit() {}
 
   clickHandler() {
     // console.log(this.opened)
-    if(this.opened === true) {
+    if (this.opened === true) {
       this.opened = false;
-      this.reflectOpened.emit(this.opened)
+      this.reflectOpened.emit(this.opened);
     }
   }
 }

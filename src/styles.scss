@@ -30,3 +30,12 @@ $meat-material-theme: mat-light-theme($meat-material-primary, $meat-material-acc
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.clearButton {
+    background: #B71C1C;
+    color: white;
+}
+
+.container {
+    margin: auto;
+}

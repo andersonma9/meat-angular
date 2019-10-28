@@ -1,4 +1,4 @@
-<!-- {{ infoPedido.value | json }} -->
+{{ infoPedido.value | json }}
 
 <div fxLayout="column">
   <div id="campoCep">
@@ -40,13 +40,13 @@
           </mat-form-field>
         </div>
         <div class="mat-h2">Endereço de entrega</div>
-        <mat-divider></mat-divider>
+        <mat-divider style="margin-bottom: 15px;"></mat-divider>
         <div
           formGroupName="dadosEntrega"
           class="dadosForm"
           fxLayout="row wrap"
           fxLayout.lt-md="column"
-          fxLayoutGap="10px"
+          fxLayoutGap="10px grid"
           fxLayoutAlign="space-between"
         >
           <mat-form-field fxFlex="calc(40% - 10px)" appearance="outline">

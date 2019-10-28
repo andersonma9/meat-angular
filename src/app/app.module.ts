@@ -27,6 +27,10 @@ import { InputComponent } from "./shared/input/input.component";
 import { FormasPagamentoComponent } from "./pedido/fechamento/formas-pagamento/formas-pagamento.component";
 import { ResumoPedidoComponent } from "./pedido/fechamento/resumo-pedido/resumo-pedido.component";
 import { LoginComponent } from './application-menus/login/login.component';
+import { AdicionarComponent } from './lojas/adicionar/adicionar.component';
+import { EditarLojaComponent } from './lojas/editar-loja/editar-loja.component';
+import { CadastrarItensComponent } from './lojas/detalhes/cadastrar-itens/cadastrar-itens.component';
+import { CadastroUsuarioComponent } from './application-menus/cadastro-usuario/cadastro-usuario.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +52,11 @@ import { LoginComponent } from './application-menus/login/login.component';
     InputComponent,
     FormasPagamentoComponent,
     ResumoPedidoComponent,
-    LoginComponent
+    LoginComponent,
+    AdicionarComponent,
+    EditarLojaComponent,
+    CadastrarItensComponent,
+    CadastroUsuarioComponent
   ],
   imports: [
     BrowserModule,

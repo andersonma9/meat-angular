@@ -27,4 +27,7 @@ export class LoginComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  fecharModalLogin() {
+    this.dialogRef.close()
+  }
 }

@@ -1,1 +1,6 @@
-<p>input works!</p>
+<mat-form-field fxFlex="calc(40% - 10px)" appearance="outline">
+  <mat-label>Rua</mat-label>
+  <ng-content select="input"></ng-content>
+  <mat-hint>Diga onde devemos entregar</mat-hint>
+  <mat-error>Campo obrigatório!</mat-error>
+</mat-form-field>

@@ -1,4 +1,4 @@
-<div style="width: 100%; justify-content: flex-end; margin-left: auto; margin-right: -10px;" >
+<div class="cepDiv" >
   <mat-form-field
     color="primary"
     fxFlex.gt-sm="32.7"
@@ -11,7 +11,7 @@
     <mat-hint>Filtre sua pesquisa aqui</mat-hint>
   </mat-form-field>
 </div>
-<div fxLayoutGap="20px grid" fxLayout="row wrap" fxLayout.lt-sm="column wrap">
+<div class="divLojas" fxLayoutGap="20px grid" fxLayout="row wrap" fxLayout.lt-sm="column wrap">
   <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
     <mat-card-header fxLayout="row" style="margin-top: 10px;">
       <img
@@ -30,9 +30,9 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <mat-card-actions fxLayoutAlign="end">
-      <a [routerLink]="['detalhes']" color="primary" mat-raised-button>Produtos</a>
+      <a [routerLink]="['/loja', id]" color="primary" mat-raised-button>Produtos</a>
       <a
-        [routerLink]="['detalhes/avaliacoes']"
+        [routerLink]="['/loja', id, 'avaliacoes']"
         color="primary"
         mat-raised-button
         >Avaliações</a
