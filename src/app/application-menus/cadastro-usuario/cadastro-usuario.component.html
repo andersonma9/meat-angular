@@ -1,1 +1,51 @@
-<p>cadastro-usuario works!</p>
+<div fxLayout="column" fxFlex="70" fxFlex.lt-md="100" class="container">
+  <div class="mat-display-1">Cadastre-se</div>
+  <mat-divider></mat-divider>
+  <form>
+    <div
+      fxLayoutGap="10px"
+      fxLayout="row wrap"
+      fxLayout.lt-md="column"
+      class="forms"
+    >
+      <mat-form-field fxFlex="calc(45%)" appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(45%)" appearance="outline">
+        <mat-label>Sobrenome</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(45%)" appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(45%)" appearance="outline">
+        <mat-label>Confirmar E-mail</mat-label>
+        <input type="text" matInput />
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(45%)" appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput />
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(45%)" appearance="outline">
+        <mat-label>Confirmar Senha</mat-label>
+        <input type="password" matInput />
+      </mat-form-field>
+    </div>
+  </form>
+  <div
+    fxFlexAlign="end"
+    fxFlexAlign.lt-md="center"
+    fxLayout="row wrap"
+    fxLayoutGap="5px"
+    fxLayout.lt-md="column"
+  >
+    <button fxFlexOrder.lt-md="2" mat-raised-button color="warn">
+      Cancelar cadastro
+    </button>
+    <button fxFlexOrder.lt-md="1" mat-raised-button color="primary">
+      Confirmar cadastro
+    </button>
+  </div>
+</div>

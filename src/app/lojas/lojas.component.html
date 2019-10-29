@@ -1,142 +1,48 @@
-<div class="cepDiv" >
-  <mat-form-field
-    color="primary"
-    fxFlex.gt-sm="32.7"
-    fxFlex.lt-sm="100"
-    appearance="outline"
-  >
-    <mat-label>Pesquisar</mat-label>
-    <input matInput />
-    <mat-icon matSuffix>search</mat-icon>
-    <mat-hint>Filtre sua pesquisa aqui</mat-hint>
-  </mat-form-field>
-</div>
-<div class="divLojas" fxLayoutGap="20px grid" fxLayout="row wrap" fxLayout.lt-sm="column wrap">
-  <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
-    <mat-card-header fxLayout="row" style="margin-top: 10px;">
-      <img
-        style="margin-left: 10px;"
-        src="https://picsum.photos/200"
-        mat-card-avatar
-      />
-      <mat-card-title-group style="margin-left: auto; text-align: right;">
-        <mat-card-title>Restaurante X</mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante
-          <br>
-          Rating
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-actions fxLayoutAlign="end">
-      <a [routerLink]="['/loja', id]" color="primary" mat-raised-button>Produtos</a>
-      <a
-        [routerLink]="['/loja', id, 'avaliacoes']"
-        color="primary"
-        mat-raised-button
-        >Avaliações</a
-      >
-    </mat-card-actions>
-  </mat-card>
-  <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
-    <mat-card-header fxLayout="row" style="margin-top: 10px;">
-      <img
-        style="margin-left: 10px;"
-        src="https://picsum.photos/200"
-        mat-card-avatar
-      />
-      <mat-card-title-group style="margin-left: auto; text-align: right;">
-        <mat-card-title>Restaurante X</mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-actions fxLayoutAlign="end">
-      <a href="#" color="primary" mat-raised-button>Produtos</a>
-      <a href="#" color="primary" mat-raised-button>Avaliações</a>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
-    <mat-card-header fxLayout="row" style="margin-top: 10px;">
-      <img
-        style="margin-left: 10px;"
-        src="https://picsum.photos/200"
-        mat-card-avatar
-      />
-      <mat-card-title-group style="margin-left: auto; text-align: right;">
-        <mat-card-title>Restaurante X</mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-actions fxLayoutAlign="end">
-      <a href="#" color="primary" mat-raised-button>Produtos</a>
-      <a href="#" color="primary" mat-raised-button>Avaliações</a>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
-    <mat-card-header fxLayout="row" style="margin-top: 10px;">
-      <img
-        style="margin-left: 10px;"
-        src="https://picsum.photos/200"
-        mat-card-avatar
-      />
-      <mat-card-title-group style="margin-left: auto; text-align: right;">
-        <mat-card-title>Restaurante X</mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-actions fxLayoutAlign="end">
-      <a href="#" color="primary" mat-raised-button>Produtos</a>
-      <a href="#" color="primary" mat-raised-button>Avaliações</a>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
-    <mat-card-header fxLayout="row" style="margin-top: 10px;">
-      <img
-        style="margin-left: 10px;"
-        src="https://picsum.photos/200"
-        mat-card-avatar
-      />
-      <mat-card-title-group style="margin-left: auto; text-align: right;">
-        <mat-card-title>Restaurante X</mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-actions fxLayoutAlign="end">
-      <a href="#" color="primary" mat-raised-button>Produtos</a>
-      <a href="#" color="primary" mat-raised-button>Avaliações</a>
-    </mat-card-actions>
-  </mat-card>
-  <mat-card style="margin: 10px;" fxFlex="calc(33%-20px)">
-    <mat-card-header fxLayout="row" style="margin-top: 10px;">
-      <img
-        style="margin-left: 10px;"
-        src="https://picsum.photos/200"
-        mat-card-avatar
-      />
-      <mat-card-title-group style="margin-left: auto; text-align: right;">
-        <mat-card-title>Restaurante X</mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante
-        </mat-card-subtitle>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-actions fxLayoutAlign="end">
-      <a href="#" color="primary" mat-raised-button>Produtos</a>
-      <a href="#" color="primary" mat-raised-button>Avaliações</a>
-    </mat-card-actions>
-  </mat-card>
+<div class="container">
+  <div class="cepDiv">
+    <mat-form-field
+      color="primary"
+      fxFlex.gt-sm="31"
+      fxFlex.lt-sm="100"
+      appearance="outline"
+    >
+      <mat-label>Pesquisar</mat-label>
+      <input matInput />
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint>Filtre sua pesquisa aqui</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="divLojas" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
+    <div class="cardLoja" fxFlex="calc(32% - 10px)" *ngFor="let loja of listaLojas">
+      <mat-card fxFlex="100">
+        <mat-card-header fxLayout="row" style="margin-top: 10px;">
+          <img
+            style="margin-left: 10px;"
+            [src]="loja.logo"
+            mat-card-avatar
+          />
+          <mat-card-title-group style="margin-left: auto; text-align: right;">
+            <mat-card-title>Restaurante X</mat-card-title>
+            <mat-card-subtitle>
+              Descrição do restaurante
+              <br />
+              Rating
+            </mat-card-subtitle>
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="cardActions" fxLayoutAlign="end">
+          <a [routerLink]="['/loja', id]" color="primary" mat-raised-button
+            >Produtos</a
+          >
+          <a
+            [routerLink]="['/loja', id, 'avaliacoes']"
+            color="primary"
+            mat-raised-button
+            >Avaliações</a
+          >
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
 </div>
