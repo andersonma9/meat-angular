@@ -2,16 +2,49 @@
 //     margin-top: 10px;
 // }
 
+mat-card-actions {
+  padding-top: 0;
+}
+
 .removeButton {
-    background: #B71C1C;
+  background: #b71c1c;
 }
 
 #confirmButton {
-    background: #1b5e20;
-    color: white;
+  background: #1b5e20;
+  color: white;
 }
 
 #clearButton {
-    background: #B71C1C;
-    color: white;
+  background: #b71c1c;
+  color: white;
+}
+
+table {
+  font-size: 1.1em;
+  //   border: 1px solid red;
+  margin-top: 20px;
+  width: 100%;
+  justify-content: space-between;
+  th {
+    padding-bottom: 5px;
+    text-align: left;
+  }
+  td {
+    text-align: left;
+    margin-left: auto;
+    // padding-right: 100%;
+    // justify-content: space-between;
+    // margin-right: auto;
+  }
+}
+
+#remove {
+  text-align: right;
+}
+
+.mat-h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
 }

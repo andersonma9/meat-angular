@@ -1,6 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, ErrorHandler } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -16,21 +17,23 @@ import { DetalhesComponent } from "./lojas/detalhes/detalhes.component";
 
 import { AvaliacoesComponent } from "./lojas/detalhes/avaliacoes/avaliacoes.component";
 
-import { PedidoComponent } from "./pedido/pedido.component";
-import { FormComponent } from "./pedido/form/form.component";
-import { ItensPedidoComponent } from "./pedido/itens-pedido/itens-pedido.component";
-import { FechamentoComponent } from "./pedido/fechamento/fechamento.component";
 import { MenuComponent } from "./lojas/detalhes/itens/lista.component";
 import { ItensComponent } from "./lojas/detalhes/itens/itens/itens.component";
 import { CarrinhoComponent } from "./lojas/detalhes/itens/carrinho/carrinho.component";
 import { InputComponent } from "./shared/input/input.component";
-import { FormasPagamentoComponent } from "./pedido/fechamento/formas-pagamento/formas-pagamento.component";
-import { ResumoPedidoComponent } from "./pedido/fechamento/resumo-pedido/resumo-pedido.component";
-import { LoginComponent } from './application-menus/login/login.component';
-import { AdicionarComponent } from './lojas/adicionar/adicionar.component';
-import { EditarLojaComponent } from './lojas/editar-loja/editar-loja.component';
-import { CadastrarItensComponent } from './lojas/detalhes/cadastrar-itens/cadastrar-itens.component';
-import { CadastroUsuarioComponent } from './application-menus/cadastro-usuario/cadastro-usuario.component';
+import { LoginComponent } from "./application-menus/login/login.component";
+import { AdicionarComponent } from "./lojas/adicionar/adicionar.component";
+import { EditarLojaComponent } from "./lojas/editar-loja/editar-loja.component";
+import { CadastrarItensComponent } from "./lojas/detalhes/cadastrar-itens/cadastrar-itens.component";
+import { CadastroUsuarioComponent } from "./application-menus/cadastro-usuario/cadastro-usuario.component";
+
+import { ServicesModule } from "./services/services.module";
+import { CustomCurrencyPipe } from "./customPipes/custom-currency.pipe";
+import { GlobalErrorHandler } from "./error-handler";
+import { EditarPerfilComponent } from "./application-menus/editar-perfil/editar-perfil.component";
+import { NotificationComponent } from "./shared/notification/notification.component";
+import { PedidoModule } from "./pedido/pedido.module";
+import { SharedModule } from "./shared/shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -39,35 +42,40 @@ import { CadastroUsuarioComponent } from './application-menus/cadastro-usuario/c
     SideMenuComponent,
     LojasComponent,
     HomeComponent,
-    SobreComponent,
     DetalhesComponent,
     MenuComponent,
     AvaliacoesComponent,
     ItensComponent,
     CarrinhoComponent,
-    PedidoComponent,
-    FormComponent,
-    ItensPedidoComponent,
-    FechamentoComponent,
     InputComponent,
-    FormasPagamentoComponent,
-    ResumoPedidoComponent,
     LoginComponent,
     AdicionarComponent,
     EditarLojaComponent,
     CadastrarItensComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    EditarPerfilComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
     AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    // ReactiveFormsModule,
+    // FormsModule,
+    HttpClientModule,
+    // ServicesModule,
+    // PedidoModule,
+    SharedModule
   ],
-  providers: [ResponsiveService, SideMenuComponent],
+  providers: [
+    ResponsiveService,
+    SideMenuComponent,
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    }
+  ],
   entryComponents: [LoginComponent],
   bootstrap: [AppComponent]
 })

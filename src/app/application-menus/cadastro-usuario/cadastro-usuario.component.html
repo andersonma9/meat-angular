@@ -1,51 +1,220 @@
 <div fxLayout="column" fxFlex="70" fxFlex.lt-md="100" class="container">
   <div class="mat-display-1">Cadastre-se</div>
+  <!-- {{ cadastroForm.value | json }} -->
   <mat-divider></mat-divider>
-  <form>
-    <div
-      fxLayoutGap="10px"
-      fxLayout="row wrap"
-      fxLayout.lt-md="column"
-      class="forms"
-    >
-      <mat-form-field fxFlex="calc(45%)" appearance="outline">
-        <mat-label>Nome</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-      <mat-form-field fxFlex="calc(45%)" appearance="outline">
-        <mat-label>Sobrenome</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-      <mat-form-field fxFlex="calc(45%)" appearance="outline">
-        <mat-label>E-mail</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-      <mat-form-field fxFlex="calc(45%)" appearance="outline">
-        <mat-label>Confirmar E-mail</mat-label>
-        <input type="text" matInput />
-      </mat-form-field>
-      <mat-form-field fxFlex="calc(45%)" appearance="outline">
-        <mat-label>Senha</mat-label>
-        <input type="password" matInput />
-      </mat-form-field>
-      <mat-form-field fxFlex="calc(45%)" appearance="outline">
-        <mat-label>Confirmar Senha</mat-label>
-        <input type="password" matInput />
-      </mat-form-field>
-    </div>
-  </form>
-  <div
-    fxFlexAlign="end"
-    fxFlexAlign.lt-md="center"
-    fxLayout="row wrap"
-    fxLayoutGap="5px"
-    fxLayout.lt-md="column"
-  >
-    <button fxFlexOrder.lt-md="2" mat-raised-button color="warn">
-      Cancelar cadastro
-    </button>
-    <button fxFlexOrder.lt-md="1" mat-raised-button color="primary">
-      Confirmar cadastro
-    </button>
-  </div>
+  <mat-horizontal-stepper class="stepper" #stepper>
+    <mat-step>
+      <ng-template matStepLabel>Informe seus dados Pessoais</ng-template>
+
+      <form [formGroup]="cadastroForm">
+        <div
+          fxLayoutGap="10px"
+          fxLayout="row wrap"
+          fxLayout.lt-md="column"
+          class="forms"
+        >
+          <mat-form-field fxFlex="calc(33%- 10px)" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input formControlName="nome" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(33%- 10px)" appearance="outline">
+            <mat-label>Sobrenome</mat-label>
+            <input formControlName="sobrenome" type="text" matInput />
+          </mat-form-field>
+          <div formGroupName="user" fxFlex="calc(33%- 10px)">
+            <mat-form-field fxFlex="100" appearance="outline">
+              <mat-label>E-mail</mat-label>
+              <input formControlName="email" type="text" matInput />
+            </mat-form-field>
+          </div>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input formControlName="cpf" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>RG</mat-label>
+            <input formControlName="rg" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input formControlName="data_nascimento" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>Sexo</mat-label>
+            <input formControlName="sexo" maxlength="1" type="text" matInput />
+          </mat-form-field>
+          <div
+            formGroupName="user"
+            fxFlex="calc(100%- 10px)"
+            fxLayoutGap="10px"
+          >
+            <mat-form-field fxFlex="50" appearance="outline">
+              <mat-label>Nome do Usuário</mat-label>
+              <input formControlName="username" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="50" appearance="outline">
+              <mat-label>Senha</mat-label>
+              <input formControlName="password" type="password" matInput />
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <button mat-raised-button color="primary" (click)="stepper.next()">
+        Avançar
+      </button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Informe seu endereço</ng-template>
+      <form fxLayout="column" [formGroup]="cadastroForm">
+        <div
+          class="cepForm"
+          formGroupName="endereco"
+          fxFlex="50"
+          fxLayoutGap="10px"
+          fxFlexAlign="end"
+        ></div>
+        <div
+          fxLayoutGap="10px"
+          fxLayout="row wrap"
+          fxLayout.lt-md="column"
+          fxFlex="100"
+          class="forms"
+          formGroupName="endereco"
+        >
+          <mat-form-field fxFlex="calc(40%- 10px)" appearance="outline">
+            <mat-label>Rua</mat-label>
+            <input formControlName="rua" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(20%- 10px)" appearance="outline">
+            <mat-label>Número</mat-label>
+            <input formControlName="numero_casa" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(40% - 10px)" appearance="outline">
+            <mat-label>Complemento</mat-label>
+            <input formControlName="complemento" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>Bairro</mat-label>
+            <input formControlName="bairro" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>Cidade</mat-label>
+            <input formControlName="cidade" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>UF</mat-label>
+            <input maxlength="2" formControlName="uf" type="text" matInput />
+          </mat-form-field>
+          <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+            <mat-label>CEP</mat-label>
+            <input formControlName="cep" type="text" matInput />
+          </mat-form-field>
+        </div>
+      </form>
+      <div fxLayoutGap="5px">
+        <button mat-raised-button color="warn" (click)="stepper.previous()">
+          Voltar
+        </button>
+        <button mat-raised-button color="primary" (click)="stepper.next()">
+          Avançar
+        </button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Confirme suas informações</ng-template>
+
+      <mat-card id="confirmCard" fxFlex="70" fxFlex.lt-md="100">
+        <mat-card-title>
+          Seus dados Pessoais
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <h4>
+            Nome:
+          </h4>
+          <p>
+            {{ cadastroForm.controls["nome"].value }}
+          </p>
+          <br />
+          <h4>
+            Sobrenome:
+          </h4>
+          <p>
+            {{ cadastroForm.controls["sobrenome"].value }}
+          </p>
+          <br />
+          <h4>
+            Usuário:
+          </h4>
+          <p>
+            {{ cadastroForm.get("user.username").value }}
+          </p>
+        </mat-card-content>
+        <mat-card-title>
+          Seu endereço
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <h4>
+            Rua:
+          </h4>
+          <p>
+            {{ cadastroForm.get("endereco.rua").value }}
+          </p>
+          <br />
+          <h4>
+            Número:
+          </h4>
+          <p>
+            {{ cadastroForm.get("endereco.numero_casa").value }}
+          </p>
+          <br />
+          <h4>
+            Complemento:
+          </h4>
+          <p>
+            {{ cadastroForm.get("endereco.complemento").value }}
+          </p>
+          <br />
+          <h4>
+            Cidade:
+          </h4>
+          <p>
+            {{ cadastroForm.get("endereco.cidade").value }}
+          </p>
+          <br />
+          <h4>
+            UF:
+          </h4>
+          <p>
+            {{ cadastroForm.get("endereco.uf").value }}
+          </p>
+        </mat-card-content>
+        <div
+          fxFlexAlign="end"
+          fxFlexAlign.lt-md="center"
+          fxLayout="row wrap"
+          fxLayoutGap="5px"
+          fxLayout.lt-md="column"
+        >
+          <button
+            (click)="stepper.previous()"
+            fxFlexOrder.lt-md="2"
+            mat-raised-button
+            color="warn"
+          >
+            Voltar
+          </button>
+          <button
+            (click)="cadastrarUsuario(cadastroForm.value)"
+            fxFlexOrder.lt-md="1"
+            mat-raised-button
+            color="primary"
+          >
+            Cadastrar
+          </button>
+        </div>
+      </mat-card>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>

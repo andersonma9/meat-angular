@@ -3,26 +3,26 @@
     <img
       fxFlexOffset="auto"
       mat-card-md-image
-      src="https://picsum.photos/200"
+      [src]="produtoImg"
     />
-    <mat-card-title>Nome do Prato</mat-card-title>
+    <mat-card-title>{{ produto.descricao }}</mat-card-title>
     <mat-card-subtitle>
       <ul>
-        <li>Descrição</li>
-        <li>Preço</li>
+        <li>{{ produto.descricao }}</li>
+        <li>{{ produto.valor | customCurrency }}</li>
       </ul>
     </mat-card-subtitle>
   </mat-card-header>
   <br />
   <mat-divider></mat-divider>
   <mat-card-content id="cardContent">
-    <button id="addButton" color="primary" mat-raised-button>
+    <button (click)="adicionarProduto(produto, quantidade.value)" id="addButton" color="primary" mat-raised-button>
       Adicionar
       <mat-icon style="margin-bottom: 2.5px">add</mat-icon>
     </button>
     <mat-form-field id="qteAdd" fxFlexOffset="auto" fxFlex="15">
       <mat-label>Adicionar:</mat-label>
-      <input matInput placeholder="Placeholder" value="1" />
+      <input #quantidade matInput placeholder="Placeholder" value="1" />
     </mat-form-field>
   </mat-card-content>
 </mat-card>

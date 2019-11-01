@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { LojaModel } from "../../models/loja.model";
+import { CadastrarLojaService } from "../../services/cadastrar-loja/cadastrar-loja.service";
 
 @Component({
   selector: "app-adicionar",
@@ -7,14 +9,17 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
   styleUrls: ["./adicionar.component.scss"]
 })
 export class AdicionarComponent implements OnInit {
-  constructor(private _fb: FormBuilder) {}
+  constructor(
+    private _fb: FormBuilder,
+    private _cadastrarLojaService: CadastrarLojaService
+  ) {}
 
   dadosLoja: FormGroup;
 
   ngOnInit() {
     this.dadosLoja = this._fb.group({
-      razaoSocial: this._fb.control("", [Validators.required]),
-      nomeFantasia: this._fb.control("", [Validators.required]),
+      razao_social: this._fb.control("", [Validators.required]),
+      nome_fantasia: this._fb.control("", [Validators.required]),
       cnpj: this._fb.control("", [
         Validators.required,
         Validators.minLength(14),
@@ -32,7 +37,7 @@ export class AdicionarComponent implements OnInit {
     // console.log(this.dadosLoja.controls['cnpj'].errors)
   }
 
-  cadastrarLoja() {
-    console.log(this.dadosLoja.value);
+  cadastrarLoja(dadosLoja: LojaModel) {
+    this._cadastrarLojaService.cadastrarLoja(dadosLoja).subscribe();
   }
 }

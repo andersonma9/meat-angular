@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ResponsiveService } from "src/app/responsive.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { LojasService } from "../../services/lojas/lojas.service";
+import { LojaModel } from "../../models/loja.model";
 
 @Component({
   selector: "app-detalhes",
@@ -11,10 +13,13 @@ export class DetalhesComponent implements OnInit {
   constructor(
     private _responsiveService: ResponsiveService,
     private _router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _lojasService: LojasService
   ) {}
 
   idLoja;
+
+  loja: LojaModel = new LojaModel()
 
   centerCardTitle() {
     return !this._responsiveService
@@ -23,9 +28,13 @@ export class DetalhesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.centerCardTitle();
-    // console.log(this._router)
-    // console.log(this._activatedRoute.snapshot.params)
+    // console.log(this._activatedRoute.snapshot.params['id'])
+    this.idLoja = this._activatedRoute.snapshot.params["id"];
+    this._lojasService.lojaById(this.idLoja).subscribe(dadosLoja => {
+      this.loja = dadosLoja;
+      // console.log(this.loja.nome_fantasia);
+      // console.log(dadosLoja);
+    });
   }
 
   setLoja() {

@@ -1,15 +1,20 @@
 <div id="itensContainer" fxLayout="row" fxLayout.lt-md="column">
-  <div fxFlex="55" fxFlexOrder.lt-md="2" >
-    <app-itens></app-itens>
-    <app-itens></app-itens>
-    <app-itens></app-itens>
-    <app-itens></app-itens>
-    <app-itens></app-itens>
-    <app-itens></app-itens>
-    <app-itens></app-itens>
+  <div fxFlex="55" fxFlexOrder.lt-md="2">
+    <div *ngFor="let produto of produtos">
+      <div *ngIf="this.produtos.length !== 0">
+        <app-itens [produto]="produto"></app-itens>
+      </div>
+    </div>
   </div>
 
-  <div fxFlexOffset.gt-sm="2" fxFlex="43" fxFlexOrder.lt-md="1" style="margin-bottom: 15px;">
-    <app-carrinho></app-carrinho>
+  <div
+    fxFlexOffset.gt-sm="2"
+    fxFlex="43"
+    fxFlexOrder.lt-md="1"
+    style="margin-bottom: 15px;"
+  >
+    <div>
+      <app-carrinho [itensCarrinho]="itensCarrinho"></app-carrinho>
+    </div>
   </div>
 </div>

@@ -7,19 +7,19 @@
   <form [formGroup]="loginForm" autocomplete="off" autofill="off">
     <div fxLayout="column">
       <mat-form-field appearance="outline">
-        <mat-label>E-mail</mat-label>
-        <input formControlName="email" matInput />
+        <mat-label>Usuário</mat-label>
+        <input formControlName="username" matInput />
         <mat-icon matSuffix>email</mat-icon>
         <mat-error>Campo obrigatório!</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Senha</mat-label>
-        <input type="password" formControlName="senha" matInput />
+        <input type="password" formControlName="password" matInput />
         <mat-icon matSuffix>lock</mat-icon>
         <mat-error>Campo obrigatório!</mat-error>
       </mat-form-field>
       <div fxLayout="row" style="margin-bottom: 5px">
-        <button id="loginButton" mat-raised-button color="primary">
+        <button (click)="login(loginForm.value)" id="loginButton" mat-raised-button color="primary">
           Login
         </button>
         <button (click)="fecharModalLogin()" [routerLink]="['/cadastro']" routerLinkActive="router-link-active"  id="signUpButton" mat-raised-button color="accent">

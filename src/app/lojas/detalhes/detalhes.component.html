@@ -1,14 +1,25 @@
-<div style="margin: auto;" fxLayout="column" fxFlex="70" fxFlex.lt-lg="100" class="container">
+<div
+  style="margin: auto;"
+  fxLayout="column"
+  fxFlex="70"
+  fxFlex.lt-lg="100"
+  class="container"
+>
   <mat-card
     fxLayout="row wrap"
     fxLayout.xs="column"
     fxLayoutAlign.lt-md="center center"
   >
-    <img style="border-radius: 50px 5px 5px 5px;" src="https://picsum.photos/200" alt="" fxFlexAlign="center" />
+    <img
+      style="border-radius: 50px 5px 5px 5px;"
+      src="https://picsum.photos/200"
+      alt=""
+      fxFlexAlign="center"
+    />
     <div fxLayout="column" style="padding: 0 0 0 10px;">
       <mat-card-header fxFlex="calc(45%-15px)">
         <mat-card-title>
-          Nome do Restaurante
+          {{ loja.nome_fantasia }}
         </mat-card-title>
         <mat-card-subtitle>
           Descrição do restaurante com as informações sobre a história
@@ -24,12 +35,27 @@
       </mat-card-content>
     </div>
     <div id="editButton" fxLayout="column" fxLayoutGap="5px">
-      <a mat-raised-button color="warn" [routerLink]="['editar']" routerLinkActive="router-link-active" >Editar</a>
-      <a mat-raised-button color="warn" [routerLink]="['cadastro-item']" routerLinkActive="router-link-active" >Cadastrar Itens</a>
+      <a
+        mat-raised-button
+        color="warn"
+        [routerLink]="['editar']"
+        routerLinkActive="router-link-active"
+        >Editar</a
+      >
+      <a
+        mat-raised-button
+        color="warn"
+        [routerLink]="['cadastro-item']"
+        routerLinkActive="router-link-active"
+        >Cadastrar Itens</a
+      >
     </div>
   </mat-card>
 
-  <nav mat-tab-nav-bar style="margin: 5px auto 0px auto; width: 100%; background-color: white; ">
+  <nav
+    mat-tab-nav-bar
+    style="margin: 5px auto 0px auto; width: 100%; background-color: white; "
+  >
     <a
       fxFlex="100"
       style="margin-right: auto;"
@@ -38,7 +64,8 @@
       mat-tab-link
       [routerLink]="['itens']"
       routerLinkActive="active"
-      >Produtos</a>
+      >Produtos</a
+    >
     <a
       fxFlex="100"
       style="margin-left: auto;"
@@ -47,7 +74,8 @@
       mat-tab-link
       [routerLink]="['avaliacoes']"
       routerLinkActive="active"
-      >Avaliações</a>
+      >Avaliações</a
+    >
   </nav>
   <router-outlet></router-outlet>
 </div>

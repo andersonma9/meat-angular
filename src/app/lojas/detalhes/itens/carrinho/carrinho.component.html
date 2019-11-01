@@ -4,69 +4,91 @@
       <mat-icon>shopping_cart</mat-icon>
       <mat-card-title>Seu carrinho</mat-card-title>
     </mat-card-title-group>
-    <mat-divider></mat-divider>
+    <mat-divider *ngIf="itensCarrinho.length === 0"></mat-divider>
+    <!-- <mat-divider></mat-divider> -->
     <mat-card-content id="conteudo">
-      <div class="mat-title" style="margin: 10px 0 10px 0;">
-        Item: x1
+      <div *ngIf="itensCarrinho.length > 0">
+        <table>
+          <tr>
+            <th>Produto</th>
+            <th>Valor (R$)</th>
+            <th id="remove">Remover</th>
+          </tr>
+          <mat-divider></mat-divider>
+
+          <tr *ngFor="let produto of itensCarrinho">
+            <td>
+              {{ produto.descricao }}
+              <span
+                style="margin-left: 12px"
+                matBadgeSize="medium"
+                [matBadge]="produto.qtd_item"
+                matBadgeColor="primary"
+              >
+              </span>
+            </td>
+            <td>{{ produto.valor * produto.qtd_item | customCurrency }}</td>
+            <td>
+              <button
+                (click)="removerItem(produto)"
+                fxFlexOffset="auto"
+                isIconButton
+                isRoundButton
+                mat-icon-button
+                style="padding: 0;"
+              >
+                <mat-icon inline>remove</mat-icon>
+              </button>
+            </td>
+            <mat-divider></mat-divider>
+          </tr>
+        </table>
+      </div>
+
+      <div *ngIf="itensCarrinho.length === 0">
+        <h2 class="mat-h2">
+          Não encontramos itens no seu carrinho! <br />
+          Por que não começamos?
+        </h2>
+      </div>
+
+      <div *ngIf="this._carrinhoComprasService.identificaLojasDiferentes">
+        <h2 class="mat-h2">
+          Os itens do carrinho são de uma loja diferente da atual! <br />
+          Por favor, limpe seu carrinho!
+        </h2>
+      </div>
+
+      <!-- <div
+        class="mat-title"
+        style="margin: 10px 0 10px 0;"
+        *ngFor="let produto of itensCarrinho"
+      >
+        {{ produto.descricao + ": x" + produto.qtd_item + ' |'}}
         <div
           class="mat-body-2"
           style="margin-top: auto; margin-bottom: auto;"
           fxFlexOffset="auto"
         >
-          R$ 15,00
+          <div style="margin-right: 15px;">
+            {{ produto.valor * produto.qtd_item | customCurrency }}
+          </div>
+          <button
+            fxFlexOffset="auto"
+            isIconButton
+            isRoundButton
+            mat-icon-button
+            style="padding: 0;"
+          >
+            <mat-icon inline>remove</mat-icon>
+          </button>
         </div>
-        <button
-          fxFlexOffset="auto"
-          isIconButton
-          isRoundButton
-          mat-icon-button
-          style="padding: 0;"
-        >
-          <mat-icon inline>remove</mat-icon>
-        </button>
-      </div>
-      <div class="mat-title" style="margin: 10px 0 10px 0;">
-        Item: x1
-        <div
-          class="mat-body-2"
-          style="margin-top: auto; margin-bottom: auto;"
-          fxFlexOffset="auto"
-        >
-          R$ 5,55
-        </div>
-        <button
-          fxFlexOffset="auto"
-          isIconButton
-          isRoundButton
-          mat-icon-button
-          style="padding: 0;"
-        >
-          <mat-icon inline>remove</mat-icon>
-        </button>
-      </div>
-      <div class="mat-title" style="margin: 10px 0 10px 0;">
-        Item: x1
-        <div
-          class="mat-body-2"
-          style="margin-top: auto; margin-bottom: auto;"
-          fxFlexOffset="auto"
-        >
-          R$ 9,50
-        </div>
-        <button
-          fxFlexOffset="auto"
-          isIconButton
-          isRoundButton
-          mat-icon-button
-          style="padding: 0;"
-        >
-          <mat-icon inline>remove</mat-icon>
-        </button>
-      </div>
+      </div> -->
     </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-actions align="end">
-      <button id="clearButton" mat-raised-button>Limpar</button>
+    <mat-card-actions *ngIf="itensCarrinho.length > 0" align="end">
+      <button (click)="limparCarrinho()" id="clearButton" mat-raised-button>
+        Limpar
+      </button>
       <a [routerLink]="['/pedido']" id="confirmButton" mat-raised-button
         >Confirmar</a
       >

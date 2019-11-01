@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { CarrinhoComprasService } from '../../../services/carrinho-compras/carrinho-compras.service';
 
 @Component({
   selector: "app-resumo-pedido",
@@ -10,14 +11,15 @@ export class ResumoPedidoComponent implements OnInit {
   dataSource;
   displayedColumns: string[] = ["frete", "valorProdutos", "total"];
 
-  constructor() {}
+  constructor(private _carrinhoComprasService: CarrinhoComprasService) {}
 
   ngOnInit() {
+    let frete = 10;
     this.dataSource = this.itensPedido = [
       {
-        frete: "R$ 10,00",
-        valorProdutos: "R$ 3,50",
-        total: "R$ 109,10"
+        frete: frete,
+        valorProdutos: this._carrinhoComprasService.somaTotal,
+        total: frete  + this._carrinhoComprasService.somaTotal
       }
     ];
   }

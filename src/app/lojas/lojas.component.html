@@ -12,31 +12,27 @@
       <mat-hint>Filtre sua pesquisa aqui</mat-hint>
     </mat-form-field>
   </div>
-  <div class="divLojas" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
-    <div class="cardLoja" fxFlex="calc(32% - 10px)" *ngFor="let loja of listaLojas">
+  <div
+    class="divLojas"
+    fxLayout="row wrap"
+    fxLayout.lt-sm="column"
+    fxLayoutGap="10px"
+  >
+    <div class="cardLoja" fxFlex="32" *ngFor="let loja of lojas">
       <mat-card fxFlex="100">
         <mat-card-header fxLayout="row" style="margin-top: 10px;">
-          <img
-            style="margin-left: 10px;"
-            [src]="loja.logo"
-            mat-card-avatar
-          />
+          <img style="margin-left: 10px; margin-bottom: 10px;" src={{loja.logo}} mat-card-avatar />
           <mat-card-title-group style="margin-left: auto; text-align: right;">
-            <mat-card-title>Restaurante X</mat-card-title>
-            <mat-card-subtitle>
-              Descrição do restaurante
-              <br />
-              Rating
-            </mat-card-subtitle>
+            <mat-card-title>{{ loja.nome_fantasia }}</mat-card-title>
           </mat-card-title-group>
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-actions class="cardActions" fxLayoutAlign="end">
-          <a [routerLink]="['/loja', id]" color="primary" mat-raised-button
+          <a [routerLink]="['/loja', loja.id]" color="primary" mat-raised-button
             >Produtos</a
           >
           <a
-            [routerLink]="['/loja', id, 'avaliacoes']"
+            [routerLink]="['/loja', loja.id, 'avaliacoes']"
             color="primary"
             mat-raised-button
             >Avaliações</a

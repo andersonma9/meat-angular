@@ -25,7 +25,7 @@
       </mat-form-field>
       <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
         <mat-label>Quantidade</mat-label>
-        <input formControlName="quantidade" type="text" matInput />
+        <input formControlName="qtd_estoque" type="text" matInput />
         <!-- <mat-hint>Informe-nos o CNPJ da sua empresa (14 dígitos)</mat-hint> -->
         <!-- <mat-error>CNPJ inválido</mat-error> -->
       </mat-form-field>
@@ -33,7 +33,7 @@
   </form>
   <div class="botoes">
     <button class="clearButton" mat-raised-button>Cancelar</button>
-    <button mat-raised-button color="primary">
+    <button (click)="cadastrarProduto(dadosItem.value)" mat-raised-button color="primary">
       Cadastrar
     </button>
   </div>

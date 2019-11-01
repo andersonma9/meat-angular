@@ -1,0 +1,33 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Coluna de nome -->
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.descricao }}</mat-cell>
+    <mat-footer-cell *matFooterCellDef>Valor Total dos Produtos (R$)</mat-footer-cell>
+  </ng-container>
+
+  <!-- Coluna de Preço -->
+  <ng-container matColumnDef="valor">
+    <mat-header-cell *matHeaderCellDef>Preço</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.valor | customCurrency }}</mat-cell>
+    <mat-footer-cell *matFooterCellDef>-</mat-footer-cell>
+  </ng-container>
+
+  <!-- Coluna de Quantidade -->
+  <ng-container matColumnDef="quantidade">
+    <mat-header-cell *matHeaderCellDef>Qte.</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.qtd_item }}</mat-cell>
+    <mat-footer-cell *matFooterCellDef>-</mat-footer-cell>
+  </ng-container>
+
+  <!-- Total por produto -->
+  <ng-container matColumnDef="total">
+    <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
+    <mat-cell *matCellDef="let item">{{ item.valor * item.qtd_item | customCurrency }}</mat-cell>
+    <mat-footer-cell *matFooterCellDef> {{total() | customCurrency}} </mat-footer-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

@@ -1,0 +1,47 @@
+<div fxLayout="column" fxFlex="70" fxFlex.lt-md="100" id="mainFormField">
+    <div class="mat-display-1">
+      Finalize seu pedido
+    </div>
+    <mat-divider></mat-divider>
+    <!-- 
+    <div>
+      <app-form></app-form>
+    </div>
+  
+    <div>
+      <app-itens-pedido></app-itens-pedido>
+    </div>
+  
+    
+    <div>
+      <app-fechamento></app-fechamento>
+    </div>
+    
+  </div> -->
+  
+    <mat-horizontal-stepper fxLayout="column" #stepper linear class="stepper">
+      <mat-step>
+        <ng-template matStepLabel>Preencha seus dados</ng-template>
+        <app-form [dadosClientes] = "dadosClientes"></app-form>
+        <div class="btnAcao">
+          <button color="primary" (click)="stepper.next()" mat-raised-button>Avançar</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Verifique os Itens</ng-template>
+        <app-itens-pedido [itensPedido]="itensPedido"></app-itens-pedido>
+        <div class="btnAcao">
+          <button class="botaoVoltar" (click)="stepper.previous()" mat-raised-button>Voltar</button>
+          <button color="primary" (click)="stepper.next()" mat-raised-button>Avançar</button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Finalize seu Pedido</ng-template>
+        <app-fechamento></app-fechamento>
+        <div class="btnAcao">
+          <button class="botaoVoltar" (click)="stepper.previous()" mat-raised-button>Voltar</button>
+          <button (click)="enviarCompra()" color="primary" mat-raised-button>Confirmar</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>

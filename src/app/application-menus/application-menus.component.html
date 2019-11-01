@@ -9,12 +9,12 @@
       <a *ngIf="mediumScreen" [routerLink] = "['/sobre']" mat-button href="#">Sobre</a>
     </span>
     <!-- Adicionar NgIf pra caso o usuário exista -->
-    <!-- <div>
-      <a mat-button href="#">Olá, Usuário</a>
+    <div *ngIf="this._loginService.isLogged()">
+      <a mat-button [routerLink]="['/editar-perfil']" routerLinkActive="mat-accent" >{{ 'Bem-vindo (a), ' +  _loginService.userInfo.nome + ' ' + _loginService.userInfo.sobrenome }}</a>
       |
-      <a mat-button href="#">Logout</a>
-    </div> -->
-    <div>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+    <div *ngIf="!this._loginService.isLogged()">
       <button (click)="abrirDialogoLogin()" mat-button>Login</button>
     </div>
   </mat-toolbar-row>

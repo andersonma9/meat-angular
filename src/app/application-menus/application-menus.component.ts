@@ -7,6 +7,8 @@ import {
   MAT_DIALOG_DATA
 } from "@angular/material/dialog";
 import { LoginComponent } from "./login/login.component";
+import { LoginService } from "../services/login/login.service";
+import { HeaderService } from "../services/header.service";
 
 @Component({
   selector: "app-application-menus",
@@ -26,10 +28,29 @@ export class ApplicationMenusComponent implements OnInit {
   constructor(
     private _responsiveService: ResponsiveService,
     private _zone: NgZone,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private _loginService: LoginService,
+    private _headerService: HeaderService
   ) {}
 
   ngOnInit() {
+    if (
+      localStorage.getItem("loggedUser") &&
+      localStorage.getItem("userInfo")
+    ) {
+      this._loginService.loggedUser = JSON.parse(
+        localStorage.getItem("loggedUser")
+      );
+      let token = "JWT " + this._loginService.loggedUser.token;
+      this._headerService.httpOptions.headers = this._headerService.httpOptions.headers.set(
+        "Authorization",
+        token
+      );
+      this._loginService.userInfo = JSON.parse(
+        localStorage.getItem("userInfo")
+      );
+    }
+
     this.opened = false;
     this._responsiveService.checkScreen(600).subscribe(breakpoint => {
       this.smallScreen = breakpoint.matches;
@@ -79,10 +100,14 @@ export class ApplicationMenusComponent implements OnInit {
   abrirDialogoLogin(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: "350px",
-      data: {nome: "Anderson"}
+      data: { nome: "Anderson" }
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed");
     });
+  }
+
+  logout() {
+    this._loginService.logout();
   }
 }
