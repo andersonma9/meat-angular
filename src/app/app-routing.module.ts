@@ -12,6 +12,7 @@ import { CadastrarItensComponent } from "./lojas/detalhes/cadastrar-itens/cadast
 import { CadastroUsuarioComponent } from "./application-menus/cadastro-usuario/cadastro-usuario.component";
 import { EditarPerfilComponent } from "./application-menus/editar-perfil/editar-perfil.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { EditarItemComponent } from './lojas/detalhes/editar-item/editar-item.component';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
       { path: "itens", component: MenuComponent },
       { path: "avaliacoes", component: AvaliacoesComponent },
       { path: "editar", component: EditarLojaComponent },
-      { path: "cadastro-item", component: CadastrarItensComponent }
+      { path: "cadastro-item", component: CadastrarItensComponent },
+      { path: 'editar-item/:id', component: EditarItemComponent}
     ]
   },
   {

@@ -28,20 +28,21 @@ mat-divider {
 
 .logoPreview {
   margin: auto;
-  width: 150px;
+  width: 100px;
+  margin-top: 10px;
 }
 
 img {
   border-radius: 20px 20px;
 }
 
-.logoPreview {
-  // background-color: transparent;
-  margin-top: 10px;
-}
+
 
 input[type="file"] {
   // display: none;
 //   background-color: red;
 //   cursor: pointer;
+}
+.botoes {
+  margin-top: 15px;
 }

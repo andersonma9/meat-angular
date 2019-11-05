@@ -1,21 +1,7 @@
-<div
-  style="margin: auto;"
-  fxLayout="column"
-  fxFlex="70"
-  fxFlex.lt-lg="100"
-  class="container"
->
-  <mat-card
-    fxLayout="row wrap"
-    fxLayout.xs="column"
-    fxLayoutAlign.lt-md="center center"
-  >
-    <img
-      style="border-radius: 50px 5px 5px 5px;"
-      src="https://picsum.photos/200"
-      alt=""
-      fxFlexAlign="center"
-    />
+<div [@detalhesAppeard] style="margin: auto;" fxLayout="column" fxFlex="70" fxFlex.lt-lg="100" class="container">
+  <mat-card fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign.lt-md="center center">
+    <img style="border-radius: 50px 5px 5px 5px; width: 200px; height: 200px;" src="{{loja.logo}}" alt=""
+      fxFlexAlign="center" />
     <div fxLayout="column" style="padding: 0 0 0 10px;">
       <mat-card-header fxFlex="calc(45%-15px)">
         <mat-card-title>
@@ -35,47 +21,19 @@
       </mat-card-content>
     </div>
     <div id="editButton" fxLayout="column" fxLayoutGap="5px">
-      <a
-        mat-raised-button
-        color="warn"
-        [routerLink]="['editar']"
-        routerLinkActive="router-link-active"
-        >Editar</a
-      >
-      <a
-        mat-raised-button
-        color="warn"
-        [routerLink]="['cadastro-item']"
-        routerLinkActive="router-link-active"
-        >Cadastrar Itens</a
-      >
+      <a mat-raised-button color="warn" [routerLink]="['editar']" routerLinkActive="router-link-active">Editar</a>
+      <a mat-raised-button color="warn" [routerLink]="['cadastro-item']" routerLinkActive="router-link-active">Cadastrar
+        Itens</a>
+      <a mat-raised-button color="warn" [routerLink]="['editar-item', '6']" routerLinkActive="router-link-active">Editar Item
+        Itens</a>
     </div>
   </mat-card>
 
-  <nav
-    mat-tab-nav-bar
-    style="margin: 5px auto 0px auto; width: 100%; background-color: white; "
-  >
-    <a
-      fxFlex="100"
-      style="margin-right: auto;"
-      color="primary"
-      mat-stroked-button
-      mat-tab-link
-      [routerLink]="['itens']"
-      routerLinkActive="active"
-      >Produtos</a
-    >
-    <a
-      fxFlex="100"
-      style="margin-left: auto;"
-      color="primary"
-      mat-stroked-button
-      mat-tab-link
-      [routerLink]="['avaliacoes']"
-      routerLinkActive="active"
-      >Avaliações</a
-    >
+  <nav mat-tab-nav-bar style="margin: 5px auto 0px auto; width: 100%; background-color: white; ">
+    <a fxFlex="100" style="margin-right: auto;" color="primary" mat-stroked-button mat-tab-link [routerLink]="['itens']"
+      routerLinkActive="active">Produtos</a>
+    <a fxFlex="100" style="margin-left: auto;" color="primary" mat-stroked-button mat-tab-link
+      [routerLink]="['avaliacoes']" routerLinkActive="active">Avaliações</a>
   </nav>
   <router-outlet></router-outlet>
 </div>

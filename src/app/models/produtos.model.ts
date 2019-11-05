@@ -5,4 +5,5 @@ export class ProdutosModel {
   loja: string;
   qtd_estoque: number;
   length: number;
+  logo: any;
 }

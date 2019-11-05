@@ -5,35 +5,41 @@
     Cadastrar um novo produto
   </div>
   <mat-divider></mat-divider>
-  <form [formGroup]="dadosItem">
-    <div
-      class="forms"
-      fxLayout="row wrap"
-      fxLayout.lt-md="column"
-      fxLayoutGap="10px"
-    >
-      <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
-        <mat-label>Descrição do Produto</mat-label>
-        <input formControlName="descricao" type="text" matInput />
-        <!-- <mat-hint>Esse é o nome como os seus clientes conhecem</mat-hint> -->
-      </mat-form-field>
+  <div fxLayout="row" fxFlex='100' >
 
-      <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
-        <mat-label>Informe o valor do seu produto</mat-label>
-        <input formControlName="valor" type="text" matInput />
-        <!-- <mat-hint>Esse é o nome que consta nos deocumentos da sua empresa</mat-hint> -->
-      </mat-form-field>
-      <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
-        <mat-label>Quantidade</mat-label>
-        <input formControlName="qtd_estoque" type="text" matInput />
-        <!-- <mat-hint>Informe-nos o CNPJ da sua empresa (14 dígitos)</mat-hint> -->
-        <!-- <mat-error>CNPJ inválido</mat-error> -->
-      </mat-form-field>
+    <div *ngIf="logoPreview">
+      <img class="logoPreview" [src]="logoPreview" />
     </div>
-  </form>
+    <form [formGroup]="dadosItem" fxFlex='100'>
+      <div class="forms"  fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="10px">
+        <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
+          <mat-label>Descrição do Produto</mat-label>
+          <input formControlName="descricao" type="text" matInput />
+          <!-- <mat-hint>Esse é o nome como os seus clientes conhecem</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
+          <mat-label>Informe o valor do seu produto</mat-label>
+          <input formControlName="valor" type="text" matInput />
+          <!-- <mat-hint>Esse é o nome que consta nos deocumentos da sua empresa</mat-hint> -->
+        </mat-form-field>
+        <mat-form-field fxFlex="calc(33%-10px)" appearance="outline">
+          <mat-label>Quantidade</mat-label>
+          <input formControlName="qtd_estoque" type="text" matInput />
+          <!-- <mat-hint>Informe-nos o CNPJ da sua empresa (14 dígitos)</mat-hint> -->
+          <!-- <mat-error>CNPJ inválido</mat-error> -->
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+    <input id="imageSelector" type="file" (change)="onFileChanged($event)" name="Escolha o logo"
+      style="display:none;" />
   <div class="botoes">
+    <button (click)="selecionaLogo()" mat-raised-button color="primary" style="margin-right: 5px;">
+      Logo
+    </button>
     <button class="clearButton" mat-raised-button>Cancelar</button>
-    <button (click)="cadastrarProduto(dadosItem.value)" mat-raised-button color="primary">
+    <button [disabled]="dadosItem.invalid" (click)="cadastrarProduto(dadosItem.value)" mat-raised-button color="primary">
       Cadastrar
     </button>
   </div>

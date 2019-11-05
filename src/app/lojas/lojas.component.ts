@@ -44,9 +44,9 @@ export class LojasComponent implements OnInit {
     //     logo: `https://picsum.photos/id/${randomNumber}/200/200`
     //   });
     // }
-    const randomNumber = Math.floor(Math.random() * 100);
+    // const randomNumber = Math.floor(Math.random() * 100);
 
-    this.logo = `https://picsum.photos/id/${randomNumber}/200/200`;
+    // this.logo = `https://picsum.photos/id/${randomNumber}/200/200`;
 
     this.listaLojas();
   }
@@ -57,8 +57,8 @@ export class LojasComponent implements OnInit {
       .pipe(
         tap(lojas => {
           for (let loja of lojas.results) {
-            const randomNumber = Math.floor(Math.random() * 100);
-            loja.logo = `https://picsum.photos/id/${randomNumber}/200/200`;
+            // const randomNumber = Math.floor(Math.random() * 100);
+            // loja.logo = `https://picsum.photos/id/${randomNumber}/200/200`;
             // console.log(loja);
           }
         })

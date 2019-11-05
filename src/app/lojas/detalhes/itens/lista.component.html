@@ -4,6 +4,9 @@
       <div *ngIf="this.produtos.length !== 0">
         <app-itens [produto]="produto"></app-itens>
       </div>
+      <div *ngIf="this.produtos.length === 0">
+        Não há produtos cadastrados nessa loja
+      </div>
     </div>
   </div>
 

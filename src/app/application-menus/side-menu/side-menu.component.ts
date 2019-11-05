@@ -4,7 +4,8 @@ import {
   Input,
   Output,
   EventEmitter,
-  ContentChild
+  ContentChild,
+  ChangeDetectorRef
 } from "@angular/core";
 import { DetalhesComponent } from "../../lojas/detalhes/detalhes.component";
 import { LojaModel } from 'src/app/models/loja.model';
@@ -26,7 +27,7 @@ export class SideMenuComponent implements OnInit {
   @ContentChild(DetalhesComponent, { static: false })
   private _lojaDetalhe: DetalhesComponent;
 
-  constructor(private _lojasService: LojasService, private _loginService: LoginService) {}
+  constructor(private _lojasService: LojasService, private _loginService: LoginService, private _cd: ChangeDetectorRef) {}
 
   listaLojas: Array<LojaModel>;
 
@@ -36,7 +37,9 @@ export class SideMenuComponent implements OnInit {
     this._lojasService.listaLojas().subscribe(lojas => {
       // console.log(lojas.results)
       this.listaLojas = lojas.results
+      
     })
+    this._cd.detectChanges()
   }
 
   clickHandler() {

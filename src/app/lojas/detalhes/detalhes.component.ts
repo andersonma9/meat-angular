@@ -3,11 +3,32 @@ import { ResponsiveService } from "src/app/responsive.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { LojasService } from "../../services/lojas/lojas.service";
 import { LojaModel } from "../../models/loja.model";
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: "app-detalhes",
   templateUrl: "./detalhes.component.html",
-  styleUrls: ["./detalhes.component.scss"]
+  styleUrls: ["./detalhes.component.scss"],
+  animations: [
+    trigger('detalhesAppeard',[
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'TranslateX(-5%)'
+        }), 
+        animate('0.5s ease-in', style({
+          opacity: 1,
+          transform: 'TranslateX(0%)'
+        }))
+      ])
+    ])
+  ]
 })
 export class DetalhesComponent implements OnInit {
   constructor(
@@ -38,6 +59,12 @@ export class DetalhesComponent implements OnInit {
       // console.log(this.loja.nome_fantasia);
       // console.log(dadosLoja);
     });
+
+    this._activatedRoute.params.subscribe(rota => {
+      this._lojasService.lojaById(rota.id).subscribe(dadosLojas => {
+        this.loja = dadosLojas
+      })
+    })
   }
 
   setLoja() {

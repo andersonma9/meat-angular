@@ -3,6 +3,8 @@ import { ProdutosModel } from "../../../../models/produtos.model";
 import { ProdutoVenda } from "../../../../models/produto-venda.model";
 import { CarrinhoComprasService } from "../../../../services/carrinho-compras/carrinho-compras.service";
 import { ActivatedRoute } from "@angular/router";
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: "app-itens",
@@ -13,15 +15,22 @@ export class ItensComponent implements OnInit {
   @Input() produto: ProdutosModel;
   produtoImg;
 
+  api: string
+
   constructor(
     private _carrinhoCompras: CarrinhoComprasService,
     private _activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    this.api = environment.apiUrl
+  }
 
   ngOnInit() {
-    let randomNumber = Math.floor(Math.random() * 100);
-    this.produtoImg = `https://picsum.photos/id/${randomNumber}/200/200`;
+    // let randomNumber = Math.floor(Math.random() * 100);
+    // this.produtoImg = `https://picsum.photos/id/${randomNumber}/200/200`;
     // console.log(this.produtoImg)
+
+    // console.log(this.produto)
+    // this.produtoImg = `${this.api}/produto.logo`;
 
     // if (
     //   this._carrinhoCompras.itensCarrinho[0].loja !==

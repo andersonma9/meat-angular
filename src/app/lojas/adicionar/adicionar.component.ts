@@ -47,37 +47,43 @@ export class AdicionarComponent implements OnInit {
     // let formData = new FormData()
     console.log(dadosLoja);
     // formData.append('çpka');
-    // this._cadastrarLojaService
-    //   .cadastrarLoja(dadosLoja)
-    //   .subscribe(res => console.log(res));
+    this._cadastrarLojaService
+      .cadastrarLoja(dadosLoja)
+      .subscribe(res => console.log(res));
   }
 
   onFileChanged(event) {
 
-    let formData = new FormData();
+    // let formData = new FormData();
 
-    formData.append('logo', event.target.files[0], event.target.files[0].name)
-    this.dadosLoja.patchValue({logo: formData})
+    // formData.append('logo', event.target.files[0], event.target.files[0].name)
+    // this.dadosLoja.patchValue({logo: formData})
 
 
-    console.log(formData.get('logo'))
+    // console.log(formData.get('logo'))
 
     // console.log(event);
-    // let reader = new FileReader();
+    let reader = new FileReader();
 
-    // this.selectedFile = <File>event.target.files[0];
-    // reader.readAsDataURL(this.selectedFile);
+    this.selectedFile = <File>event.target.files[0];
+    reader.readAsDataURL(this.selectedFile);
 
-    // reader.onload = () => {
-    //   this.dadosLoja.patchValue({ logo: reader.result });
-    //   // console.log(reader.result)
-    //   this.logoPreview = reader.result
-    // };
+    reader.onload = () => {
+      this.dadosLoja.patchValue({ logo: reader.result });
+      // console.log(reader.result)
+      this.logoPreview = reader.result
+    };
 
 
 
     // // this.logoPreview = atob(reader.result);
 
     // this._cd.markForCheck();
+  }
+
+  selecionaLogo() {
+    // console.log('logo')
+    let logoInput = document.getElementById('imageSelector')
+    logoInput.click()
   }
 }

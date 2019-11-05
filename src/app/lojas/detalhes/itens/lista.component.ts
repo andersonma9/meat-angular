@@ -46,6 +46,7 @@ export class MenuComponent implements OnInit {
 
   itensLoja(lojaId) {
     this._lojasService.itensLoja(lojaId).subscribe(produtos => {
+      // console.log(produtos)
       this.produtos = produtos;
       // console.log(this.produtos.length);
     });

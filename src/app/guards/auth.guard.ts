@@ -5,14 +5,15 @@ import {
   RouterStateSnapshot,
   UrlTree,
   Router,
-  CanLoad
+  CanLoad,
+  Route
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { LoginService } from "../services/login/login.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatDialog } from "@angular/material/dialog";
 import { LoginComponent } from "../application-menus/login/login.component";
-import { Route } from "@angular/compiler/src/core";
+// import { Route } from "@angular/compiler/src/core";
 
 @Injectable({
   providedIn: "root"

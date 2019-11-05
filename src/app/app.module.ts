@@ -28,6 +28,7 @@ import { GlobalErrorHandler } from "./error-handler";
 import { EditarPerfilComponent } from "./application-menus/editar-perfil/editar-perfil.component";
 import { NotificationComponent } from "./shared/notification/notification.component";
 import { SharedModule } from "./shared/shared/shared.module";
+import { EditarItemComponent } from './lojas/detalhes/editar-item/editar-item.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SharedModule } from "./shared/shared/shared.module";
     CadastrarItensComponent,
     CadastroUsuarioComponent,
     EditarPerfilComponent,
-    NotificationComponent
+    NotificationComponent,
+    EditarItemComponent
   ],
   imports: [
     BrowserModule,

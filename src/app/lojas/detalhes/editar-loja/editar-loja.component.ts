@@ -15,7 +15,7 @@ export class EditarLojaComponent implements OnInit, OnChanges {
     private _lojasService: LojasService,
     private _activatedRoute: ActivatedRoute,
     private _zone: NgZone
-  ) {}
+  ) { }
 
   dadosLoja: FormGroup;
 
@@ -35,12 +35,23 @@ export class EditarLojaComponent implements OnInit, OnChanges {
     this.lojaId = this._activatedRoute.parent.snapshot.params["id"];
 
     this._lojasService.lojaById(this.lojaId).subscribe(loja => {
-      this._zone.run(() => {
+
+      this.dadosLoja.get("razao_social").patchValue(loja.razao_social);
+      this.dadosLoja.get("nome_fantasia").patchValue(loja.nome_fantasia);
+      this.dadosLoja.get("cnpj").patchValue(loja.cnpj);
+    });
+
+    this._activatedRoute.parent.params.subscribe(rota => {
+      // console.log(rota)
+      this._lojasService.lojaById(rota.id).subscribe(loja => {
+        // console.log(loja)
         this.dadosLoja.get("razao_social").patchValue(loja.razao_social);
         this.dadosLoja.get("nome_fantasia").patchValue(loja.nome_fantasia);
         this.dadosLoja.get("cnpj").patchValue(loja.cnpj);
-      });
-    });
+      })
+    })
+
+
 
     // this._lojasService.lojaById(this.lojaId).subscribe(loja => {
     //   this.dadosLoja.get("razao_social").patchValue(loja.razao_social);
