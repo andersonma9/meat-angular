@@ -78,9 +78,14 @@ export class LoginService /* extends HeaderService */ {
     localStorage.removeItem("loggedUser");
     localStorage.removeItem("userInfo");
     // window.location.reload()
-    this.redirectUrl = ''
+    this.redirectUrl = "";
     let router = this._injector.get(Router);
     router.navigate([this.redirectUrl]);
+    this._headerService.httpOptions.headers = this._headerService.httpOptions.headers.set(
+      "Authorization",
+      ""
+    );
+    // console.log(this._headerService.httpOptions.headers)
   }
 
   clienteInfo(id): Observable<UsuarioAtivo> {

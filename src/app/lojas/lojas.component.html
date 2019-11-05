@@ -1,4 +1,4 @@
-<div class="container">
+<div [@lojasReady]="lojasTrigger" class="container">
   <div class="cepDiv">
     <mat-form-field
       color="primary"
@@ -21,7 +21,11 @@
     <div class="cardLoja" fxFlex="32" *ngFor="let loja of lojas">
       <mat-card fxFlex="100">
         <mat-card-header fxLayout="row" style="margin-top: 10px;">
-          <img style="margin-left: 10px; margin-bottom: 10px;" src={{loja.logo}} mat-card-avatar />
+          <img
+            style="margin-left: 10px; margin-bottom: 10px;"
+            src="{{ loja.logo }}"
+            mat-card-avatar
+          />
           <mat-card-title-group style="margin-left: auto; text-align: right;">
             <mat-card-title>{{ loja.nome_fantasia }}</mat-card-title>
           </mat-card-title-group>

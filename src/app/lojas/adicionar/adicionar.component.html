@@ -6,6 +6,10 @@
   </div>
   <mat-divider></mat-divider>
   <form [formGroup]="dadosLoja">
+    <div class="logoPreview" *ngIf="logoPreview">
+      <img [src]="logoPreview" />
+    </div>
+
     <div
       class="forms"
       fxLayout="row wrap"
@@ -38,9 +42,21 @@
       </mat-form-field>
     </div>
   </form>
+  <div>
+    <input
+      id="imageSelector"
+      type="file"
+      (change)="onFileChanged($event)"
+      name="Escolha o logo"
+    />
+  </div>
   <div class="botoes">
     <button class="clearButton" mat-raised-button>Cancelar</button>
-    <button (click)="cadastrarLoja(dadosLoja.value)" mat-raised-button color="primary">
+    <button
+      (click)="cadastrarLoja(dadosLoja.value)"
+      mat-raised-button
+      color="primary"
+    >
       Confirmar
     </button>
   </div>

@@ -26,7 +26,7 @@ export class CadastrarItensComponent implements OnInit {
   }
 
   cadastrarProduto(produto: ProdutoCadastroModel) {
-    console.log(this._headerService.httpOptions.headers.getAll('Authorization'))
+    // console.log(this._headerService.httpOptions.headers.getAll('Authorization'))
     this._cadastroProdutoService.cadastrarProduto(produto).subscribe()
   } 
 }

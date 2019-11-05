@@ -7,7 +7,7 @@ import { DetalhesComponent } from "./lojas/detalhes/detalhes.component";
 import { MenuComponent } from "./lojas/detalhes/itens/lista.component";
 import { AvaliacoesComponent } from "./lojas/detalhes/avaliacoes/avaliacoes.component";
 import { AdicionarComponent } from "./lojas/adicionar/adicionar.component";
-import { EditarLojaComponent } from "./lojas/editar-loja/editar-loja.component";
+import { EditarLojaComponent } from "./lojas/detalhes/editar-loja/editar-loja.component";
 import { CadastrarItensComponent } from "./lojas/detalhes/cadastrar-itens/cadastrar-itens.component";
 import { CadastroUsuarioComponent } from "./application-menus/cadastro-usuario/cadastro-usuario.component";
 import { EditarPerfilComponent } from "./application-menus/editar-perfil/editar-perfil.component";

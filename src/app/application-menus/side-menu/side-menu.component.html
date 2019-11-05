@@ -21,12 +21,37 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <div *ngFor="let loja of listaLojas">
-            <a mat-button [routerLink]="['/loja', loja.id, 'editar']" routerLinkActive="mat-accent" >{{ loja.nome }}</a>
+            <a
+              mat-button
+              [routerLink]="['/loja', loja.id, 'editar']"
+              routerLinkActive="mat-accent"
+              >{{ loja.nome_fantasia }}</a
+            >
             <mat-divider></mat-divider>
           </div>
         </mat-expansion-panel>
         <mat-divider></mat-divider>
+      
+      <mat-divider></mat-divider>
+      <mat-expansion-panel class="expansionPanel">
+        <mat-expansion-panel-header style="padding: 0 16px;">
+          <mat-panel-title style="color: white;">
+            Cadastrar Produtos
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let loja of listaLojas">
+          <a
+            mat-button
+            [routerLink]="['/loja', loja.id, 'cadastro-item']"
+            routerLinkActive="mat-accent"
+            >{{ loja.nome_fantasia }}</a
+          >
+          <mat-divider></mat-divider>
+        </div>
       </mat-expansion-panel>
+      <mat-divider></mat-divider>
+      <!-- </mat-expansion-panel> -->
+    </mat-expansion-panel>
 
       <mat-expansion-panel class="expansionPanel">
         <mat-expansion-panel-header>
@@ -34,9 +59,9 @@
             Gestão Usuário
           </mat-panel-title>
         </mat-expansion-panel-header>
-        <a mat-button href="#">Editar Dados</a>
+        <a mat-button [routerLink]="['/editar-perfil']" routerLinkActive="mat-accent" >Editar Dados</a>
         <mat-divider></mat-divider>
-        <a mat-button href="#">Cadastrar Usuário</a>
+        <a mat-button *ngIf="!loggedUser()" [routerLink]="['/cadastro']" routerLinkActive="mat-accen" >Cadastrar Usuário</a>
         <mat-divider></mat-divider>
       </mat-expansion-panel>
     </mat-accordion>

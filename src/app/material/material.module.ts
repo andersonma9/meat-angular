@@ -22,6 +22,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatBadgeModule } from "@angular/material/badge";
 import {MatChipsModule} from '@angular/material/chips';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+
 
 
 const MaterialImports = [
@@ -45,7 +47,8 @@ const MaterialImports = [
   MatSnackBarModule,
   MatBadgeModule,
   MatChipsModule,
-  MatSliderModule
+  MatSliderModule,
+  MatBottomSheetModule
 ];
 
 @NgModule({

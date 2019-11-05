@@ -7,6 +7,9 @@ import {
   ContentChild
 } from "@angular/core";
 import { DetalhesComponent } from "../../lojas/detalhes/detalhes.component";
+import { LojaModel } from 'src/app/models/loja.model';
+import { LojasService } from '../../services/lojas/lojas.service';
+import { LoginService } from '../../services/login/login.service';
 
 @Component({
   selector: "app-side-menu",
@@ -23,15 +26,18 @@ export class SideMenuComponent implements OnInit {
   @ContentChild(DetalhesComponent, { static: false })
   private _lojaDetalhe: DetalhesComponent;
 
-  constructor() {}
+  constructor(private _lojasService: LojasService, private _loginService: LoginService) {}
 
-  listaLojas: object[] = [  
-    { nome: "Loja 1", id: "1" },
-    { nome: "Loja 2", id: "2" },
-    { nome: "Loja 3", id: "3" }
-  ];
+  listaLojas: Array<LojaModel>;
 
-  ngOnInit() {}
+  
+
+  ngOnInit() {
+    this._lojasService.listaLojas().subscribe(lojas => {
+      // console.log(lojas.results)
+      this.listaLojas = lojas.results
+    })
+  }
 
   clickHandler() {
     // console.log(this.opened)
@@ -39,5 +45,9 @@ export class SideMenuComponent implements OnInit {
       this.opened = false;
       this.reflectOpened.emit(this.opened);
     }
+  }
+
+  loggedUser(): boolean {
+    return this._loginService.isLogged()
   }
 }
