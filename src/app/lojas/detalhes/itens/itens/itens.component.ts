@@ -4,6 +4,7 @@ import { ProdutoVenda } from "../../../../models/produto-venda.model";
 import { CarrinhoComprasService } from "../../../../services/carrinho-compras/carrinho-compras.service";
 import { ActivatedRoute } from "@angular/router";
 import { environment } from 'src/environments/environment';
+import { LoginService } from '../../../../services/login/login.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ItensComponent implements OnInit {
 
   constructor(
     private _carrinhoCompras: CarrinhoComprasService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _loginService: LoginService
   ) {
     this.api = environment.apiUrl
   }

@@ -3,6 +3,7 @@ import { ResponsiveService } from "src/app/responsive.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { LojasService } from "../../services/lojas/lojas.service";
 import { LojaModel } from "../../models/loja.model";
+import { LoginService } from '../../services/login/login.service';
 import {
   trigger,
   state,
@@ -36,7 +37,8 @@ export class DetalhesComponent implements OnInit {
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
     private _lojasService: LojasService,
-    private _zone: NgZone
+    private _zone: NgZone,
+    private _loginService: LoginService
   ) {}
 
   idLoja;

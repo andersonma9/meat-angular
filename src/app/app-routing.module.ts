@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: "avaliacoes", component: AvaliacoesComponent },
       { path: "editar", component: EditarLojaComponent },
       { path: "cadastro-item", component: CadastrarItensComponent },
-      { path: 'editar-item/:id', component: EditarItemComponent}
+      { path: 'editar-produtos', component: EditarItemComponent}
     ]
   },
   {

@@ -1,10 +1,6 @@
 <mat-card id="card">
   <mat-card-header>
-    <img
-      fxFlexOffset="auto"
-      mat-card-md-image
-      src="{{produto.logo}}"
-    />
+    <img fxFlexOffset="auto" mat-card-md-image src="{{ produto.logo }}" />
     <mat-card-title>{{ produto.descricao }}</mat-card-title>
     <mat-card-subtitle>
       <ul>
@@ -16,7 +12,14 @@
   <br />
   <mat-divider></mat-divider>
   <mat-card-content id="cardContent">
-    <button (click)="adicionarProduto(produto, quantidade.value)" id="addButton" color="primary" mat-raised-button>
+    
+
+    <button
+      (click)="adicionarProduto(produto, quantidade.value)"
+      id="addButton"
+      color="primary"
+      mat-raised-button
+    >
       Adicionar
       <mat-icon style="margin-bottom: 2.5px">add</mat-icon>
     </button>

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { HeaderService } from '../header.service';
+import { Observable } from 'rxjs';
+import { ProdutosModel } from 'src/app/models/produtos.model';
 
 
 
@@ -14,6 +16,10 @@ export class EditarItemService {
 
   constructor(private _httpClient: HttpClient, private _headerService: HeaderService) {
     this.api = environment.apiUrl
+  }
+
+  listaProdutos(idLoja): Observable<Array<ProdutosModel>> {
+    return this._httpClient.get<Array<ProdutosModel>>(`${this.api}/lojas/${idLoja}/produtos`);
   }
 
 
