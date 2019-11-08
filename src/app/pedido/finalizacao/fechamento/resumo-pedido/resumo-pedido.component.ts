@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { CarrinhoComprasService } from '../../../services/carrinho-compras/carrinho-compras.service';
+import { CarrinhoComprasService } from 'src/app/services/carrinho-compras/carrinho-compras.service';
+
+
 
 @Component({
   selector: "app-resumo-pedido",

@@ -1,0 +1,108 @@
+<ng-container>
+    <!-- início container -->
+    <div fxLayout="column" fxFlex="70" fxFlex.lt-md="100" class="container">
+        <ng-container *ngIf="checkFormToUse(); else cadastroPerfilHeader">
+            <div class="mat-display-1">Editar seu perfil</div>
+        </ng-container>
+        <mat-divider></mat-divider>
+        <!-- início do stepper -->
+        <mat-horizontal-stepper class="stepper" #stepper>
+            <!-- primeira parte do stepper -->
+            <mat-step>
+                <ng-template matStepLabel>Informe seus dados Pessoais</ng-template>
+                <!-- edição de perfil -->
+                <ng-container *ngIf="checkFormToUse()">
+                    <app-infos-pessoais [editarPerfil]="editarPerfil"></app-infos-pessoais>
+                </ng-container>
+                <!-- edição de perfil -->
+
+                <!-- cadastro usuário -->
+                <ng-container *ngIf="!checkFormToUse()">
+                    <app-infos-pessoais [cadastrarUsuario]="cadastrarUsuario"></app-infos-pessoais>
+                </ng-container>
+                <!-- cadastro usuário -->
+                <div fxLayoutGap="5px">
+                    <button mat-raised-button color="warn" (click)="stepper.previous()">
+                        Voltar
+                    </button>
+                    <button mat-raised-button color="primary" (click)="stepper.next()">
+                        Avançar
+                    </button>
+                </div>
+            </mat-step>
+
+            <!-- final da primeira parte do stepper -->
+
+            <!-- início da segunda parte do stepper -->
+            <mat-step>
+                <ng-template matStepLabel>Informe seu endereço</ng-template>
+                <!-- edição do perfil -->
+                <ng-container *ngIf="checkFormToUse()">
+                    <app-infos-endereco [editarPerfil]="editarPerfil"></app-infos-endereco>
+                </ng-container>
+                <!--  edição do perfil -->
+
+                <!-- cadastro usuário -->
+                <ng-container *ngIf="!checkFormToUse()">
+                    <app-infos-endereco [cadastrarUsuario]="cadastrarUsuario"></app-infos-endereco>
+                </ng-container>
+                <!-- cadastro usuário -->
+                <div fxLayoutGap="5px">
+                    <button mat-raised-button color="warn" (click)="stepper.previous()">
+                        Voltar
+                    </button>
+                    <button mat-raised-button color="primary" (click)="stepper.next()">
+                        Avançar
+                    </button>
+                </div>
+            </mat-step>
+            <!-- final da segunda parte do stepper -->
+
+            <!-- início da terceira parte do stepper -->
+            <mat-step>
+                <ng-template matStepLabel>Confirme seus dados!</ng-template>
+                <!-- edição do perfil -->
+                <ng-container *ngIf="checkFormToUse()">
+                    <app-resumo [editarPerfil]="editarPerfil"></app-resumo>
+                </ng-container>
+                <!--  edição do perfil -->
+
+                <!-- cadastro usuário -->
+                <ng-container *ngIf="!checkFormToUse()">
+                    <app-resumo [cadastrarUsuario]="cadastrarUsuario"></app-resumo>
+                </ng-container>
+                <!-- cadastro usuário -->
+                <div fxFlexAlign="end" fxFlexAlign.lt-md="center" fxLayout="row wrap" fxLayoutGap="5px"
+                    fxLayout.lt-md="column" style="margin-top: 5px;">
+                    
+                    <input (change)="onFileChange($event)" type="file" style="display: none;" #fotoPerfil>
+                    <button (click)="fotoPerfil.click()" fxFlexOrder.lt-md="2" mat-raised-button color="accent">
+                        Foto Perfil
+                    </button>
+                    <button fxFlexOrder.lt-md="2" mat-raised-button color="warn">
+                        Voltar
+                    </button>
+                    <button (click)="editarPefil(edicaoPerfilForm, this.userInfo.id)" fxFlexOrder.lt-md="1"
+                        mat-raised-button color="primary">
+                        Confirmar
+                    </button>
+                </div>
+            </mat-step>
+            <!-- final da terceira parte do stepper -->
+        </mat-horizontal-stepper>
+        <!-- final do stepper -->
+    </div>
+    <!-- final do container-->
+</ng-container>
+
+
+
+
+
+
+
+
+
+<ng-template #cadastroPerfilHeader>
+    <div class="mat-display-1">Cadastre-se</div>
+</ng-template>

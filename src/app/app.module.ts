@@ -32,6 +32,10 @@ import { EditarItemComponent } from './lojas/detalhes/editar-item/editar-item.co
 import { ItemInfoComponent } from './lojas/detalhes/editar-item/item-info/item-info.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { CardLoadingComponent } from './shared/card-loading/card-loading.component';
+import { FormsPerfilComponent } from './shared/forms-perfil/forms-perfil.component';
+import { InfosPessoaisComponent } from './shared/forms-perfil/infos-pessoais/infos-pessoais.component';
+import { InfosEnderecoComponent } from './shared/forms-perfil/infos-endereco/infos-endereco.component';
+import { ResumoComponent } from './shared/forms-perfil/resumo/resumo.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,11 @@ import { CardLoadingComponent } from './shared/card-loading/card-loading.compone
     EditarItemComponent,
     ItemInfoComponent,
     LoadingComponent,
-    CardLoadingComponent
+    CardLoadingComponent,
+    FormsPerfilComponent,
+    InfosPessoaisComponent,
+    InfosEnderecoComponent,
+    ResumoComponent,
   ],
   imports: [
     BrowserModule,

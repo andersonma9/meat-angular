@@ -1,0 +1,73 @@
+<ng-container *ngIf="checkFormToUse()">
+    <form fxLayout="column" [formGroup]="editarPerfil">
+        <div class="cepForm" formGroupName="endereco" fxFlex="50" fxLayoutGap="10px" fxFlexAlign="end"></div>
+        <div fxLayoutGap="10px" fxLayout="row wrap" fxLayout.lt-md="column" fxFlex="100" class="forms"
+            formGroupName="endereco">
+            <mat-form-field fxFlex="calc(40%- 10px)" appearance="outline">
+                <mat-label>Rua</mat-label>
+                <input formControlName="rua" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(20%- 10px)" appearance="outline">
+                <mat-label>Número</mat-label>
+                <input formControlName="numero_casa" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(40% - 10px)" appearance="outline">
+                <mat-label>Complemento</mat-label>
+                <input formControlName="complemento" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>Bairro</mat-label>
+                <input formControlName="bairro" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>Cidade</mat-label>
+                <input formControlName="cidade" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>UF</mat-label>
+                <input maxlength="2" formControlName="uf" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>CEP</mat-label>
+                <input formControlName="cep" type="text" matInput />
+            </mat-form-field>
+        </div>
+    </form>
+</ng-container>
+
+<ng-container *ngIf="!checkFormToUse()">
+    <form fxLayout="column" [formGroup]="cadastrarUsuario">
+        <div class="cepForm" formGroupName="endereco" fxFlex="50" fxLayoutGap="10px" fxFlexAlign="end"></div>
+        <div fxLayoutGap="10px" fxLayout="row wrap" fxLayout.lt-md="column" fxFlex="100" class="forms"
+            formGroupName="endereco">
+            <mat-form-field fxFlex="calc(40%- 10px)" appearance="outline">
+                <mat-label>Rua</mat-label>
+                <input formControlName="rua" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(20%- 10px)" appearance="outline">
+                <mat-label>Número</mat-label>
+                <input formControlName="numero_casa" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(40% - 10px)" appearance="outline">
+                <mat-label>Complemento</mat-label>
+                <input formControlName="complemento" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>Bairro</mat-label>
+                <input formControlName="bairro" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>Cidade</mat-label>
+                <input formControlName="cidade" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>UF</mat-label>
+                <input maxlength="2" formControlName="uf" type="text" matInput />
+            </mat-form-field>
+            <mat-form-field fxFlex="calc(25% - 10px)" appearance="outline">
+                <mat-label>CEP</mat-label>
+                <input formControlName="cep" type="text" matInput />
+            </mat-form-field>
+        </div>
+    </form>
+</ng-container>

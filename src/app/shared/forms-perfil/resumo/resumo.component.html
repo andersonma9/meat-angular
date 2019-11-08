@@ -1,0 +1,107 @@
+<ng-container *ngIf="checkFormToUse()">
+    <mat-card id="confirmCard" fxFlex="100">
+        <mat-card-header>
+            <img style="padding-bottom: 10px" src="{{ editarPerfil.get('foto').value }}" mat-card-avatar>
+            <mat-card-title>
+                Seus dados Pessoais
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <h4>
+                Nome:
+            </h4>
+            <p>
+                {{ editarPerfil.controls["nome"].value }}
+            </p>
+            <br />
+            <h4>
+                Sobrenome:
+            </h4>
+            <p>
+                {{ editarPerfil.controls["sobrenome"].value }}
+            </p>
+            <br />
+        </mat-card-content>
+        <mat-card-title>
+            Seu endereço
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <h4>
+                Rua:
+            </h4>
+            <p>
+                {{ editarPerfil.get("endereco.rua").value }}
+            </p>
+            <br />
+            <h4>
+                Número:
+            </h4>
+            <p>
+                {{ editarPerfil.get("endereco.numero_casa").value }}
+            </p>
+            <br />
+            <h4>
+                Complemento:
+            </h4>
+            <p>
+                {{ editarPerfil.get("endereco.complemento").value }}
+            </p>
+            <br />
+            <h4>
+                Cidade:
+            </h4>
+            <p>
+                {{ editarPerfil.get("endereco.cidade").value }}
+            </p>
+            <br />
+            <h4>
+                UF:
+            </h4>
+            <p>
+                {{ editarPerfil.get("endereco.uf").value }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
+
+<ng-container *ngIf="!checkFormToUse()">
+    <mat-card id="confirmCard" fxFlex="70" fxFlex.lt-md="100">
+        <mat-card-header>
+            <img style="padding-bottom: 10px" src="{{ cadastrarUsuario.get('foto').value }}" mat-card-avatar>
+            <mat-card-title>
+                Seus dados Pessoais
+            </mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <h4>Nome:</h4>
+            <p>{{ cadastrarUsuario.controls["nome"].value }}</p>
+            <br />
+            <h4>Sobrenome:</h4>
+            <p>{{ cadastrarUsuario.controls["sobrenome"].value }}</p>
+            <br />
+        </mat-card-content>
+        <mat-card-title>
+            Seu endereço
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+            <h4>Rua:</h4>
+            <p>{{ cadastrarUsuario.get("endereco.rua").value }}</p>
+            <br />
+            <h4>Número:</h4>
+            <p>{{ cadastrarUsuario.get("endereco.numero_casa").value }}</p>
+            <br />
+            <h4>Complemento:</h4>
+            <p>{{ cadastrarUsuario.get("endereco.complemento").value }}</p>
+            <br />
+            <h4>Cidade:</h4>
+            <p>{{ cadastrarUsuario.get("endereco.cidade").value }}</p>
+            <br />
+            <h4>UF:</h4>
+            <p>{{ cadastrarUsuario.get("endereco.uf").value }}</p>
+        </mat-card-content>
+            </mat-card>
+</ng-container>

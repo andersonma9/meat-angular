@@ -13,6 +13,7 @@ import { CadastroUsuarioComponent } from "./application-menus/cadastro-usuario/c
 import { EditarPerfilComponent } from "./application-menus/editar-perfil/editar-perfil.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { EditarItemComponent } from './lojas/detalhes/editar-item/editar-item.component';
+import { FormsPerfilComponent } from './shared/forms-perfil/forms-perfil.component';
 
 const routes: Routes = [
   {
@@ -62,11 +63,11 @@ const routes: Routes = [
   },
   {
     path: "cadastro",
-    component: CadastroUsuarioComponent
+    component: FormsPerfilComponent
   },
   {
     path: "editar-perfil",
-    component: EditarPerfilComponent
+    component: FormsPerfilComponent
   }
 ];
 
