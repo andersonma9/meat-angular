@@ -1,4 +1,5 @@
 export class ProdutosModel {
+  total_pages: number;
   id: number;
   descricao: string;
   valor: string;
@@ -6,4 +7,5 @@ export class ProdutosModel {
   qtd_estoque: number;
   length: number;
   logo: any;
+  results?: ProdutosModel;
 }

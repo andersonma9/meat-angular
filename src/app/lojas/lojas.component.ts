@@ -9,6 +9,7 @@ import {
   animate,
   transition
 } from "@angular/animations";
+import { PaginatorModel } from '../models/paginator.model';
 
 @Component({
   selector: "app-restaurantes",
@@ -32,6 +33,16 @@ export class LojasComponent implements OnInit {
 
   lojasTrigger: string = 'ready'
 
+  // paginador
+
+  paginas: Array<number> = [];
+
+  param: number;
+
+  pageInfo: PaginatorModel;
+
+  // paginador
+
   constructor(private _lojasService: LojasService) { }
 
   ngOnInit() {
@@ -42,8 +53,36 @@ export class LojasComponent implements OnInit {
     this._lojasService
       .listaLojas()
       .subscribe(lojas => {
-        // console.log(lojas.results);
+        console.log(lojas);
         this.lojas = lojas.results;
       });
   }
+
+  // previousPage() {
+  //   if (this.param === this.paginas[0]) {
+  //     document.getElementById('previous').setAttribute('disabled', 'true')
+  //   }
+  //   // this.paginas = [];
+  //   this.param -= 1;
+  //   this.itensLoja(this.lojaId, this.param)
+  //   this._router.navigate(['loja', this.lojaId], { queryParams: { page: this.param } })
+  //   // this.checkButton()
+  // }
+
+  // nextPage() {
+  //   if (this.param === this.paginas[this.paginas.length - 1]) {
+  //     document.getElementById('next').setAttribute('disabled', 'true')
+  //   }
+  //   // this.paginas = [];
+  //   this.param += 1;
+  //   this._router.navigate(['loja', this.lojaId], { queryParams: { page: this.param } })
+  //   this.itensLoja(this.lojaId, this.param)
+  //   // this.checkButton()
+  // }
+
+  // nagivateToPage(pag) {
+  //   // this.paginas = [];
+  //   this._router.navigate(['loja', this.lojaId], { queryParams: { page: pag } })
+  //   this.itensLoja(this.lojaId, pag)
+  // }
 }

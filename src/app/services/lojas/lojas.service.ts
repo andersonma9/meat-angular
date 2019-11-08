@@ -38,9 +38,9 @@ export class LojasService {
     );
   }
 
-  itensLoja(lojaId): Observable<ProdutosModel> {
-    return this._httpClient.get<ProdutosModel>(
-      `${this.api}/lojas/${lojaId}/produtos`
+  itensLoja(lojaId, page?): Observable<ProdutosModel> {
+    return this._httpClient.get<ProdutosModel>( 
+      `${this.api}/lojas/${lojaId}/produtos`, {params: {page: page}}
     );
   }
 }

@@ -29,7 +29,9 @@ export class ItensComponent implements OnInit {
     this.api = environment.apiUrl
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log(this.produto)
+  }
 
   adicionarProduto(produto: ProdutoVenda, quantidade: string) {
     if (this._carrinhoCompras.itensCarrinho.length != 0) {

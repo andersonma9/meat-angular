@@ -8,14 +8,24 @@
         Não há produtos cadastrados nessa loja
       </div> -->
     </div>
+    <div>
+      <div fxLayoutGap="5px">
+        <button id="previous" (click)="previousPage()" mat-raised-button>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <ng-container *ngFor="let pag of paginas">
+            <input id="value" type="text" style="display: none;" [value]="this.param">
+          <a (click)="nagivateToPage(pag)" mat-raised-button>{{ pag }}</a>
+        </ng-container>
+        <button id="next" (click)="nextPage()" mat-raised-button>
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+
+    </div>
   </div>
 
-  <div
-    fxFlexOffset.gt-sm="2"
-    fxFlex="43"
-    fxFlexOrder.lt-md="1"
-    style="margin-bottom: 15px;"
-  >
+  <div fxFlexOffset.gt-sm="2" fxFlex="43" fxFlexOrder.lt-md="1" style="margin-bottom: 15px;">
     <div>
       <app-carrinho [itensCarrinho]="itensCarrinho"></app-carrinho>
     </div>
