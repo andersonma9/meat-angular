@@ -29,10 +29,12 @@
       </div>
     </form>
   </div>
-  <div class="botoes">
-    <button class="clearButton" mat-raised-button>Cancelar</button>
-    <button (click)="editarLoja(dadosLoja.value, this.lojaId)" mat-raised-button color="primary">
-      Confirmar
-    </button>
+  <div class="botoes" fxLayoutGap="5px">
+    <input (change)="onFileChange($event)" #logo type="file" style="display: none;">
+    <button (click)="logo.click()" mat-raised-button color="accent">Logo</button>
+      <button class="clearButton" mat-raised-button>Cancelar</button>
+      <button (click)="editarLoja(dadosLoja.value, this.lojaId)" mat-raised-button color="primary">
+        Confirmar
+      </button>
   </div>
 </div>

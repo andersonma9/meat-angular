@@ -1,48 +1,35 @@
-<div [@lojasReady]="lojasTrigger" class="container">
-  <div class="cepDiv">
-    <mat-form-field
-      color="primary"
-      fxFlex.gt-sm="31"
-      fxFlex.lt-sm="100"
-      appearance="outline"
-    >
-      <mat-label>Pesquisar</mat-label>
-      <input matInput />
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-hint>Filtre sua pesquisa aqui</mat-hint>
-    </mat-form-field>
-  </div>
-  <div
-    class="divLojas"
-    fxLayout="row wrap"
-    fxLayout.lt-sm="column"
-    fxLayoutGap="10px"
-  >
-    <div class="cardLoja" fxFlex="32" *ngFor="let loja of lojas">
-      <mat-card fxFlex="100">
-        <mat-card-header fxLayout="row" style="margin-top: 10px;">
-          <img
-            style="margin-left: 10px; margin-bottom: 10px;"
-            src="{{ loja.logo }}"
-            mat-card-avatar
-          />
-          <mat-card-title-group style="margin-left: auto; text-align: right;">
-            <mat-card-title>{{ loja.nome_fantasia }}</mat-card-title>
-          </mat-card-title-group>
-        </mat-card-header>
-        <mat-divider></mat-divider>
-        <mat-card-actions class="cardActions" fxLayoutAlign="end">
-          <a [routerLink]="['/loja', loja.id]" color="primary" mat-raised-button
-            >Produtos</a
-          >
-          <a
-            [routerLink]="['/loja', loja.id, 'avaliacoes']"
-            color="primary"
-            mat-raised-button
-            >Avaliações</a
-          >
-        </mat-card-actions>
-      </mat-card>
+<ng-container *ngIf="!(lojas.length === 0); else errorContainer">
+  <div [@lojasReady]="lojasTrigger" class="container">
+    <div class="cepDiv">
+      <mat-form-field color="primary" fxFlex.gt-sm="31" fxFlex.lt-sm="100" appearance="outline">
+        <mat-label>Pesquisar</mat-label>
+        <input matInput />
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint>Filtre sua pesquisa aqui</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="divLojas" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
+      <div class="cardLoja" fxFlex="32" *ngFor="let loja of lojas">
+        <mat-card fxFlex="100">
+          <mat-card-header fxLayout="row" style="margin-top: 10px;">
+            <img style="margin-left: 10px; margin-bottom: 10px;" src="{{ loja.logo }}" mat-card-avatar />
+            <mat-card-title-group style="margin-left: auto; text-align: right;">
+              <mat-card-title>{{ loja.nome_fantasia }}</mat-card-title>
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-actions class="cardActions" fxLayoutAlign="end">
+            <a [routerLink]="['/loja', loja.id]" color="primary" mat-raised-button>Produtos</a>
+            <a [routerLink]="['/loja', loja.id, 'avaliacoes']" color="primary" mat-raised-button>Avaliações</a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #errorContainer>
+  <div>
+    Não conseguimos encontrar o que você procura!
+  </div>
+</ng-template>

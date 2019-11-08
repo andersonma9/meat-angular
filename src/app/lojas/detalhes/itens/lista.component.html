@@ -1,12 +1,12 @@
-<div id="itensContainer" fxLayout="row" fxLayout.lt-md="column">
+<div @listaAppeard id="itensContainer" fxLayout="row" fxLayout.lt-md="column">
   <div fxFlex="55" fxFlexOrder.lt-md="2">
     <div *ngFor="let produto of produtos">
       <div *ngIf="this.produtos.length !== 0">
         <app-itens [produto]="produto"></app-itens>
       </div>
-      <div *ngIf="this.produtos.length === 0">
+      <!-- <div *ngIf="this.produtos.length === 0">
         Não há produtos cadastrados nessa loja
-      </div>
+      </div> -->
     </div>
   </div>
 

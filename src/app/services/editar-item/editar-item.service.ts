@@ -23,8 +23,8 @@ export class EditarItemService {
   }
 
 
-  itemById(itemId, dadosItem) {
-    return this._httpClient.patch(`${this.api}/produtos/${itemId}`, dadosItem, {
+  editarItem(itemId, dadosItem) {
+    return this._httpClient.patch(`${this.api}/produtos/${itemId}/`, dadosItem, {
       headers: this._headerService.httpOptions.headers
     })
   }

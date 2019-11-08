@@ -81,6 +81,8 @@ export class AdicionarComponent implements OnInit {
     // this._cd.markForCheck();
   }
 
+ 
+
   selecionaLogo() {
     // console.log('logo')
     let logoInput = document.getElementById('imageSelector')

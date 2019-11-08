@@ -7,6 +7,8 @@ import {
   animate,
   transition
 } from "@angular/animations";
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-home",
@@ -28,12 +30,18 @@ import {
   ]
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly _router: Router) {
+    
+   }
+
+  navigationStart: Observable<NavigationStart>
 
   trigger: string;
 
   ngOnInit() {
     this.trigger = "homeNotReady";
     this.trigger = "ready";
+
+    
   }
 }

@@ -1,92 +1,54 @@
-<div
-  [@detalhesAppeard]
-  style="margin: auto;"
-  fxLayout="column"
-  fxFlex="70"
-  fxFlex.lt-lg="100"
-  class="container"
->
-  <mat-card
-    fxLayout="row wrap"
-    fxLayout.xs="column"
-    fxLayoutAlign.lt-md="center center"
-  >
-    <img
-      style="border-radius: 50px 5px 5px 5px; width: 200px; height: 200px;"
-      src="{{ loja.logo }}"
-      alt=""
-      fxFlexAlign="center"
-    />
-    <div fxLayout="column" style="padding: 0 0 0 10px;">
-      <mat-card-header fxFlex="calc(45%-15px)">
-        <mat-card-title>
-          {{ loja.nome_fantasia }}
-        </mat-card-title>
-        <mat-card-subtitle>
-          Descrição do restaurante com as informações sobre a história
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content fxFlex="calc(35%-15px)">
-        Demais informações, como:
-        <ul>
-          <li>Rating</li>
-          <li>Horário de funcionamento</li>
-          <li>Informações de entrega</li>
-        </ul>
-      </mat-card-content>
-    </div>
-    <div id="editButton" fxLayout="column" fxLayoutGap="5px">
-      <a
-        mat-raised-button
-        color="warn"
-        [routerLink]="['editar']"
-        routerLinkActive="router-link-active"
-        >Editar</a
-      >
-      <a
-        mat-raised-button
-        color="warn"
-        [routerLink]="['cadastro-item']"
-        routerLinkActive="router-link-active"
-        >Cadastrar Itens</a
-      >
-      <ng-container *ngIf="this._loginService.isLogged()">
-        <a
-          mat-raised-button
-          color="warn"
-          [routerLink]="['editar-produtos']"
-          routerLinkActive="router-link-active"
-        >
-          Editar Item
-        </a>
-      </ng-container>
-    </div>
-  </mat-card>
+<ng-container>
+  <div style="margin: auto;" fxLayout="column" fxFlex="70" fxFlex.lt-lg="100" class="container">
+    <!-- <ng-container  *ngIf="!loadingStatus(); else loading"> -->
+      <div [@detalhesAppeard]>      
+      <mat-card fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign.lt-md="center center">
+        <img style="border-radius: 50px 5px 5px 5px; width: 200px; height: 200px;" src="{{ loja.logo }}"
+          fxFlexAlign="center" />
+        <div fxLayout="column" style="padding: 0 0 0 10px;">
+          <mat-card-header fxFlex="calc(45%-15px)">
+            <mat-card-title>
+              {{ loja.nome_fantasia }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              Descrição do restaurante com as informações sobre a história
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content fxFlex="calc(35%-15px)">
+            Demais informações, como:
+            <ul>
+              <li>Rating</li>
+              <li>Horário de funcionamento</li>
+              <li>Informações de entrega</li>
+            </ul>
+          </mat-card-content>
+        </div>
+        <div id="editButton" fxLayout="column" fxLayoutGap="5px">
+          <a mat-raised-button color="warn" [routerLink]="['editar']" routerLinkActive="router-link-active">Editar</a>
+          <a mat-raised-button color="warn" [routerLink]="['cadastro-item']"
+            routerLinkActive="router-link-active">Cadastrar Itens</a>
+          <ng-container *ngIf="this._loginService.isLogged()">
+            <a mat-raised-button color="warn" [routerLink]="['editar-produtos']" routerLinkActive="router-link-active">
+              Editar Item
+            </a>
+          </ng-container>
+        </div>
+      </mat-card>
 
-  <nav
-    mat-tab-nav-bar
-    style="margin: 5px auto 0px auto; width: 100%; background-color: white; "
-  >
-    <a
-      fxFlex="100"
-      style="margin-right: auto;"
-      color="primary"
-      mat-stroked-button
-      mat-tab-link
-      [routerLink]="['itens']"
-      routerLinkActive="active"
-      >Produtos</a
-    >
-    <a
-      fxFlex="100"
-      style="margin-left: auto;"
-      color="primary"
-      mat-stroked-button
-      mat-tab-link
-      [routerLink]="['avaliacoes']"
-      routerLinkActive="active"
-      >Avaliações</a
-    >
-  </nav>
-  <router-outlet></router-outlet>
-</div>
+      <nav mat-tab-nav-bar style="margin: 5px auto 0px auto; width: 100%; background-color: white; ">
+        <a fxFlex="100" style="margin-right: auto;" color="primary" mat-stroked-button mat-tab-link
+          [routerLink]="['itens']" routerLinkActive="active">Produtos</a>
+        <a fxFlex="100" style="margin-left: auto;" color="primary" mat-stroked-button mat-tab-link
+          [routerLink]="['avaliacoes']" routerLinkActive="active">Avaliações</a>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- </ng-container> -->
+  </div>
+</ng-container>
+
+<ng-template #loading >
+  <div >
+    <app-card-loading ></app-card-loading>
+  </div>
+</ng-template>

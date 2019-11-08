@@ -7,12 +7,7 @@
       <ng-template matStepLabel>Informe seus dados Pessoais</ng-template>
 
       <form [formGroup]="cadastroForm">
-        <div
-          fxLayoutGap="10px"
-          fxLayout="row wrap"
-          fxLayout.lt-md="column"
-          class="forms"
-        >
+        <div fxLayoutGap="10px" fxLayout="row wrap" fxLayout.lt-md="column" class="forms">
           <mat-form-field fxFlex="calc(33%- 10px)" appearance="outline">
             <mat-label>Nome</mat-label>
             <input formControlName="nome" type="text" matInput />
@@ -43,11 +38,7 @@
             <mat-label>Sexo</mat-label>
             <input formControlName="sexo" maxlength="1" type="text" matInput />
           </mat-form-field>
-          <div
-            formGroupName="user"
-            fxFlex="calc(100%- 10px)"
-            fxLayoutGap="10px"
-          >
+          <div formGroupName="user" fxFlex="calc(100%- 10px)" fxLayoutGap="10px">
             <mat-form-field fxFlex="50" appearance="outline">
               <mat-label>Nome do Usuário</mat-label>
               <input formControlName="username" type="text" matInput />
@@ -66,21 +57,9 @@
     <mat-step>
       <ng-template matStepLabel>Informe seu endereço</ng-template>
       <form fxLayout="column" [formGroup]="cadastroForm">
-        <div
-          class="cepForm"
-          formGroupName="endereco"
-          fxFlex="50"
-          fxLayoutGap="10px"
-          fxFlexAlign="end"
-        ></div>
-        <div
-          fxLayoutGap="10px"
-          fxLayout="row wrap"
-          fxLayout.lt-md="column"
-          fxFlex="100"
-          class="forms"
-          formGroupName="endereco"
-        >
+        <div class="cepForm" formGroupName="endereco" fxFlex="50" fxLayoutGap="10px" fxFlexAlign="end"></div>
+        <div fxLayoutGap="10px" fxLayout="row wrap" fxLayout.lt-md="column" fxFlex="100" class="forms"
+          formGroupName="endereco">
           <mat-form-field fxFlex="calc(40%- 10px)" appearance="outline">
             <mat-label>Rua</mat-label>
             <input formControlName="rua" type="text" matInput />
@@ -125,6 +104,7 @@
 
       <mat-card id="confirmCard" fxFlex="70" fxFlex.lt-md="100">
         <mat-card-title>
+          <img mat-card-avatar src="{{cadastroForm.get('foto').value}}" alt="">
           Seus dados Pessoais
         </mat-card-title>
         <mat-divider></mat-divider>
@@ -190,27 +170,16 @@
             {{ cadastroForm.get("endereco.uf").value }}
           </p>
         </mat-card-content>
-        <div
-          fxFlexAlign="end"
-          fxFlexAlign.lt-md="center"
-          fxLayout="row wrap"
-          fxLayoutGap="5px"
-          fxLayout.lt-md="column"
-        >
-          <button
-            (click)="stepper.previous()"
-            fxFlexOrder.lt-md="2"
-            mat-raised-button
-            color="warn"
-          >
+        <div fxFlexAlign="end" fxFlexAlign.lt-md="center" fxLayout="row wrap" fxLayoutGap="5px" fxLayout.lt-md="column">
+          <input (change)="onFileChange($event)" type="file" style="display: none;" #fotoPerfil>
+          <button (click)="fotoPerfil.click()" fxFlexOrder.lt-md="2" mat-raised-button color="accent">
+            Foto Perfil
+          </button>
+          <button (click)="stepper.previous()" fxFlexOrder.lt-md="2" mat-raised-button color="warn">
             Voltar
           </button>
-          <button
-            (click)="cadastrarUsuario(cadastroForm.value)"
-            fxFlexOrder.lt-md="1"
-            mat-raised-button
-            color="primary"
-          >
+          <button (click)="cadastrarUsuario(cadastroForm.value)" fxFlexOrder.lt-md="1" mat-raised-button color="primary"
+            [disabled]="cadastroForm.invalid">
             Cadastrar
           </button>
         </div>

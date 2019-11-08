@@ -1,3 +1,4 @@
+
 <mat-toolbar class="mainToolbar" color="primary">
   <mat-toolbar-row class="navigation">
     <span>
@@ -19,11 +20,15 @@
     </div>
   </mat-toolbar-row>
   
+  
   <mat-toolbar-row id="secondaryRow" *ngIf="!smallScreen">
       <mat-divider vertical></mat-divider>
         <a mat-button [routerLink]="['/lojas']">Lojas</a>
         <a mat-button [routerLink] = "['/sobre']">Sobre</a>
   </mat-toolbar-row>
 </mat-toolbar>
+<!-- <ng-container *ngIf="this._navigationInfoService.navigationStatus()">
+    <mat-progress-bar color='warn' mode="indeterminate"></mat-progress-bar>
+  </ng-container> -->
 
 <app-side-menu [opened]="opened" [mode] = "mode" (reflectOpened)="reflectOpened()"></app-side-menu>

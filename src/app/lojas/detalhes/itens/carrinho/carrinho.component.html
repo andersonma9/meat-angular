@@ -16,27 +16,17 @@
           </tr>
           <mat-divider></mat-divider>
 
-          <tr *ngFor="let produto of itensCarrinho">
+          <tr @itensAnimation *ngFor="let produto of itensCarrinho">
             <td>
               {{ produto.descricao }}
-              <span
-                style="margin-left: 12px"
-                matBadgeSize="medium"
-                [matBadge]="produto.qtd_item"
-                matBadgeColor="primary"
-              >
+              <span style="margin-left: 12px" matBadgeSize="medium" [matBadge]="produto.qtd_item"
+                matBadgeColor="primary">
               </span>
             </td>
             <td>{{ produto.valor * produto.qtd_item | customCurrency }}</td>
             <td>
-              <button
-                (click)="removerItem(produto)"
-                fxFlexOffset="auto"
-                isIconButton
-                isRoundButton
-                mat-icon-button
-                style="padding: 0;"
-              >
+              <button (click)="removerItem(produto)" fxFlexOffset="auto" isIconButton isRoundButton mat-icon-button
+                style="padding: 0;">
                 <mat-icon inline>remove</mat-icon>
               </button>
             </td>
@@ -45,7 +35,7 @@
         </table>
       </div>
 
-      <div *ngIf="itensCarrinho.length === 0">
+      <div @emptyCart *ngIf="itensCarrinho.length === 0">
         <h2 class="mat-h2">
           Não encontramos itens no seu carrinho! <br />
           Por que não começamos?
@@ -89,9 +79,7 @@
       <button (click)="limparCarrinho()" id="clearButton" mat-raised-button>
         Limpar
       </button>
-      <a [routerLink]="['/pedido']" id="confirmButton" mat-raised-button
-        >Confirmar</a
-      >
+      <a [routerLink]="['/pedido']" id="confirmButton" mat-raised-button>Confirmar</a>
     </mat-card-actions>
   </mat-card>
 </div>

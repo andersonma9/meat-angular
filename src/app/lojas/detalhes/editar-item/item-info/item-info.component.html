@@ -1,0 +1,67 @@
+<ng-container >
+    <div>
+        <form [formGroup]="dadosProduto">
+            <mat-card>
+                <mat-card-header>
+                    <div style="margin-right: 16px; margin-left: -32px;"
+                        *ngIf="produtoEditar.logo !== null; else imagemAtual ">
+                        <img src="{{ produtoEditar.logo }}" mat-card-avatar />
+                    </div>
+                    <ng-template fxFlexOrder='0' #imagemAtual>
+                        <div>
+                            <img [src]="logoPreview" mat-card-avatar />
+                        </div>
+                    </ng-template>
+                    <ng-template #descricaoAtual>
+                        <div>
+                            <mat-card-title>
+                                {{ produtoEditar.descricao }}
+                            </mat-card-title>
+                        </div>
+                    </ng-template>
+                    <div *ngIf="produtoEditar.logo !== null; else descricaoAtual ">
+                        <mat-card-title>
+                            {{ produtoEditar.descricao }}
+                        </mat-card-title>
+                    </div>
+                </mat-card-header>
+                <mat-divider></mat-divider>
+                <mat-card-content>
+                    <div fxLayout="row" fxLayoutGap="5px">
+                        <div fxLayout="column" fxFlex='20'>
+                            <mat-form-field>
+                                <mat-label>Quantidade em Estoque</mat-label>
+                                <input formControlName="qtd_estoque" style="text-align: center; " type="text" matInput
+                                    value="{{ produtoEditar.qtd_estoque }}" />
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Valor de Venda</mat-label>
+                                <div fxLayout="row">
+                                    <!-- <input style="text-align: center; " type="text" matInput value="R$ " readonly /> -->
+                                    <input formControlName="valor" style="text-align: left; " type="text" matInput
+                                        value="{{ produtoEditar.valor | customCurrency }}" />
+                                </div>
+                            </mat-form-field>
+                        </div>
+                        <div fxLayout="column" fxFlex='80'>
+                            <mat-form-field>
+                                <mat-label>Alter a descrição do produto!</mat-label>
+                                <input formControlName="descricao" type="text" matInput
+                                    value="{{ produtoEditar.descricao }}">
+                            </mat-form-field>
+                            <div fxLayoutGap="5px" fxLayoutAlign="end">
+                                <div>
+                                    <input #logo type="file" style="display: none" (change)="onFileChange($event)">
+                                    <button (click)="logo.click()" mat-raised-button color="accent">Foto</button>
+                                    <button mat-raised-button color="warn">Cancelar</button>
+                                    <button (click)="editarProduto(dadosProduto.value)" mat-raised-button
+                                        color="primary">Confirmar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</ng-container>

@@ -46,23 +46,20 @@ export class LoginService /* extends HeaderService */ {
       .pipe(
         tap(loginResponse => {
           this.loggedUser = loginResponse;
-          // console.log(this.loggedUser);
           this._headerService.httpOptions.headers = this._headerService.httpOptions.headers.set(
             "Authorization",
             "JWT " + loginResponse.token
           );
           localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
-          // console.log(
-          //   this._headerService.httpOptions.headers.getAll("Authorization")
-          // );
+         
           this.clienteInfo(loginResponse.cliente).subscribe(dados => {
+            console.log(dados)
             this.userInfo = dados;
             localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
           });
 
           let router = this._injector.get(Router);
           if (this.redirectUrl) {
-            // window.location.reload()
             router.navigate([this.redirectUrl]);
           }
         })

@@ -9,11 +9,24 @@ import {
   Route,
   ActivatedRouteSnapshot
 } from "@angular/router";
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: "app-menu",
   templateUrl: "./lista.component.html",
-  styleUrls: ["./lista.component.scss"]
+  styleUrls: ["./lista.component.scss"],
+  animations: [
+    trigger('listaAppeard', [
+      transition(':enter', [
+        style({
+          opacity: 0
+        }),
+        animate('0.25s', style({
+          opacity: 1
+        }))
+      ])
+    ])
+  ]
 })
 export class MenuComponent implements OnInit {
   produtos: ProdutosModel;
@@ -23,7 +36,7 @@ export class MenuComponent implements OnInit {
     private _lojasService: LojasService,
     private _activatedRoute: ActivatedRoute,
     private _carrinhoComprasService: CarrinhoComprasService
-  ) {}
+  ) { }
 
   produtoImg: string;
 
@@ -34,21 +47,16 @@ export class MenuComponent implements OnInit {
 
     // recebendo os dados do carrinho de compras
     if (localStorage.getItem("itensCarrinho")) {
-      // this.itensCarrinho = JSON.parse(localStorage.getItem("itensCarrinho"));
-      // this._carrinhoComprasService.itensCarrinho = JSON.parse(localStorage.getItem("itensCarrinho"));
       this.itensCarrinho = this._carrinhoComprasService.itensCarrinho
-      // console.log(this.itensCarrinho);
     } else {
+      
       this.itensCarrinho.length = 0;
-      // console.log(this.itensCarrinho);
     }
   }
 
   itensLoja(lojaId) {
     this._lojasService.itensLoja(lojaId).subscribe(produtos => {
-      // console.log(produtos)
       this.produtos = produtos;
-      // console.log(this.produtos.length);
     });
   }
 }

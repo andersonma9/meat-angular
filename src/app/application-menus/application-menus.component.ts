@@ -9,6 +9,8 @@ import {
 import { LoginComponent } from "./login/login.component";
 import { LoginService } from "../services/login/login.service";
 import { HeaderService } from "../services/header.service";
+import { NavigationInfoService } from '../services/navigation-info/navigation-info.service';
+
 
 @Component({
   selector: "app-application-menus",
@@ -30,7 +32,8 @@ export class ApplicationMenusComponent implements OnInit {
     private _cd: ChangeDetectorRef,
     public dialog: MatDialog,
     private _loginService: LoginService,
-    private _headerService: HeaderService
+    private _headerService: HeaderService,
+    private _navigationInfoService: NavigationInfoService
   ) { }
 
   ngOnInit() {

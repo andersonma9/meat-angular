@@ -49,6 +49,11 @@ export class GlobalErrorHandler implements ErrorHandler {
           );
 
           break;
+        case 400:
+            this._snackBar.open('Por favor, verifique as informações inseridas', 'Fechar', {
+              duration: 2000
+            })
+        break
       }
     });
 

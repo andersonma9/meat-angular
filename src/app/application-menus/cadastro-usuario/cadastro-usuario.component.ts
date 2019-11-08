@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators
 } from "@angular/forms";
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-cadastro-usuario",
@@ -14,7 +16,9 @@ import {
 export class CadastroUsuarioComponent implements OnInit {
   constructor(
     private _cadastroUsuario: CadastroUsuarioService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _sn: MatSnackBar,
+    private _router: Router
   ) {}
 
   cadastroForm: FormGroup;
@@ -26,6 +30,7 @@ export class CadastroUsuarioComponent implements OnInit {
         password: this._fb.control("", [Validators.required]),
         email: this._fb.control("", [Validators.required, Validators.email])
       }),
+      foto: this._fb.control('', [Validators.required]),
       nome: this._fb.control("", [Validators.required]),
       sobrenome: this._fb.control("", [Validators.required]),
       cpf: this._fb.control("", [Validators.required]),
@@ -44,9 +49,32 @@ export class CadastroUsuarioComponent implements OnInit {
     });
   }
 
+  // receber foto de perfil
+
+  onFileChange(event) {
+
+    let file = <File> event.target.files[0];
+
+    let fr = new FileReader();
+    fr.readAsDataURL(file);
+    fr.onload = () => {
+      this.cadastroForm.patchValue({
+        foto: fr.result
+      })
+      console.log(this.cadastroForm.value)
+    }
+  }
+
+  // receber foto de perfil
+
   cadastrarUsuario(dadosUsuario) {
     this._cadastroUsuario
       .cadastrarUsuario(dadosUsuario)
-      .subscribe(dados => console.log(dados));
+      .subscribe(dados => {
+        this._sn.open('Cadastro realizado com sucesso!', '', {
+          duration: 2000
+        })
+        this._router.navigate([''])
+      });
   }
 }

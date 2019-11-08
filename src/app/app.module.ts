@@ -29,6 +29,9 @@ import { EditarPerfilComponent } from "./application-menus/editar-perfil/editar-
 import { NotificationComponent } from "./shared/notification/notification.component";
 import { SharedModule } from "./shared/shared/shared.module";
 import { EditarItemComponent } from './lojas/detalhes/editar-item/editar-item.component';
+import { ItemInfoComponent } from './lojas/detalhes/editar-item/item-info/item-info.component';
+import { LoadingComponent } from './shared/loading/loading.component';
+import { CardLoadingComponent } from './shared/card-loading/card-loading.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { EditarItemComponent } from './lojas/detalhes/editar-item/editar-item.co
     CadastroUsuarioComponent,
     EditarPerfilComponent,
     NotificationComponent,
-    EditarItemComponent
+    EditarItemComponent,
+    ItemInfoComponent,
+    LoadingComponent,
+    CardLoadingComponent
   ],
   imports: [
     BrowserModule,

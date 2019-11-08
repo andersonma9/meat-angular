@@ -7,6 +7,8 @@ import {
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { LoginService } from "../../services/login/login.service";
 import { HeaderService } from "../../services/header.service";
+import { NotificationService } from 'src/app/services/notification/notification.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: "app-login",
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     public dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data,
     private _fb: FormBuilder,
-    private _loginService: LoginService
+    private _loginService: LoginService,
+    private _snackBar: MatSnackBar
   ) {}
 
   loginForm: FormGroup;
@@ -31,7 +34,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(dadosLogin) {
-    this._loginService.login(dadosLogin).subscribe(dados => {});
+    this._loginService.login(dadosLogin).subscribe(dados => {
+      this._snackBar.open('Login realizado com sucesso!',  'Fechar' , {
+        duration: 2000
+      })
+    });
     this.dialogRef.close();
   }
 

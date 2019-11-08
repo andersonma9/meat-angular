@@ -119,9 +119,12 @@
       <ng-template matStepLabel>Confirme suas informações</ng-template>
 
       <mat-card id="confirmCard" fxFlex="70" fxFlex.lt-md="100">
-        <mat-card-title>
-          Seus dados Pessoais
-        </mat-card-title>
+        <mat-card-header >
+          <img style="padding-bottom: 10px" src="{{ edicaoPerfilForm.get('foto').value }}" mat-card-avatar>
+          <mat-card-title>
+            Seus dados Pessoais
+          </mat-card-title>
+        </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content>
           <h4>
@@ -186,6 +189,10 @@
           fxLayoutGap="5px"
           fxLayout.lt-md="column"
         >
+        <input (change)="onFileChange($event)" type="file" style="display: none;" #fotoPerfil>
+          <button (click)="fotoPerfil.click()" fxFlexOrder.lt-md="2" mat-raised-button color="accent">
+            Foto Perfil
+          </button>
           <button
             (click)="stepper.previous()"
             fxFlexOrder.lt-md="2"
@@ -195,7 +202,7 @@
             Voltar
           </button>
           <button
-            (click)="editarPefil(edicaoPerfilForm.value, this.userInfo.id)"
+            (click)="editarPefil(edicaoPerfilForm, this.userInfo.id)"
             fxFlexOrder.lt-md="1"
             mat-raised-button
             color="primary"

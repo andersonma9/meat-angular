@@ -1,25 +1,33 @@
-import { Component, OnInit, OnChanges, NgZone } from "@angular/core";
+import { Component, OnInit, OnChanges, NgZone, ChangeDetectorRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LojasService } from "../../../services/lojas/lojas.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
 import { LojaModel } from "../../../models/loja.model";
+import { NavigationInfoService } from 'src/app/services/navigation-info/navigation-info.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: "app-editar-loja",
   templateUrl: "./editar-loja.component.html",
   styleUrls: ["./editar-loja.component.scss"]
 })
-export class EditarLojaComponent implements OnInit, OnChanges {
+export class EditarLojaComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _lojasService: LojasService,
     private _activatedRoute: ActivatedRoute,
-    private _zone: NgZone
+    private _cd: ChangeDetectorRef,
+    private _navigationInfoService: NavigationInfoService,
+    private _router: Router
   ) { }
 
   dadosLoja: FormGroup;
 
   lojaId: number;
+
+  logoPreview: string;
+  
+  selectedImage;
 
   ngOnInit() {
     this.dadosLoja = this._fb.group({
@@ -60,20 +68,22 @@ export class EditarLojaComponent implements OnInit, OnChanges {
     // });
   }
 
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    for (let propName in changes) {
-      let chng = changes[propName];
-      let cur = JSON.stringify(chng.currentValue);
-      let prev = JSON.stringify(chng.previousValue);
-      console.log(changes);
-    }
-    // console.log(propName);
 
-    // this._lojasService.lojaById(this.lojaId).subscribe(loja => {
-    //   this.dadosLoja.get("razao_social").patchValue(loja.razao_social);
-    //   this.dadosLoja.get("nome_fantasia").patchValue(loja.nome_fantasia);
-    //   this.dadosLoja.get("cnpj").patchValue(loja.cnpj);
-    // });
+  onFileChange(event) {
+
+    if(event !== undefined) {
+      // console.log(event.target.files[0])
+      this.selectedImage = <File>event.target.files[0];
+      let fr = new FileReader();
+      fr.readAsDataURL(this.selectedImage);
+
+      fr.onload = () => {
+        this.dadosLoja.addControl('logo', this._fb.control(fr.result, [Validators.required]))
+        // console.log(this.dadosLoja.value)
+      }
+      this._cd.markForCheck()
+    } 
+    
   }
 
   applyMask() {
@@ -86,6 +96,12 @@ export class EditarLojaComponent implements OnInit, OnChanges {
   }
 
   editarLoja(dadosLoja, lojaId) {
-    this._lojasService.editarLoja(lojaId, dadosLoja).subscribe();
+    this._lojasService.editarLoja(lojaId, dadosLoja).subscribe(
+      res => {
+        this._router.navigate(['lojas', lojaId])
+      }
+    );
+    
+    
   }
 }

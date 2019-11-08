@@ -5,14 +5,15 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 import { Observable } from "rxjs";
 import { HeaderService } from "../header.service";
-import { tap } from "rxjs/operators";
-import { ActivatedRoute } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
 export class CarrinhoComprasService {
-  itensCarrinho: Array<ProdutoVenda>;;
+
+  itemBadgeIndicator: string = 'normal';
+
+  itensCarrinho: Array<ProdutoVenda>;
 
   somaTotal: number;
 
@@ -34,28 +35,34 @@ export class CarrinhoComprasService {
     } else {
       localStorage.setItem("itensCarrinho", JSON.stringify(this.itensCarrinho));
     }
+    // console.log(this.itemBadgeIndicator)
   }
 
   adicionarItem(produto: ProdutoVenda, quantidade) {
-    /* if (localStorage.getItem("itensCarrinho")) {
-        this.itensCarrinho = JSON.parse(localStorage.getItem('itensCarrinho'));
-      } */
-
-    // console.log(produto.loja)
-    // console.log(this._activatedRoute.snapshot)
-
-    if (this.itensCarrinho.length === 0) {
+   if (this.itensCarrinho.length === 0) {
       produto.qtd_item = quantidade;
       this.itensCarrinho.push(produto);
+      this.itemBadgeIndicator = 'mudou';
+      // console.log(this.itemBadgeIndicator)
+      this.itemBadgeIndicator = 'normal';
+      // console.log(this.itemBadgeIndicator)
     } else {
       let produtoAModificar = this.itensCarrinho.find(
         produtoCarrinho => produtoCarrinho.id === produto.id
       );
       if (produtoAModificar) {
         produtoAModificar.qtd_item += quantidade;
+        this.itemBadgeIndicator = 'mudou';
+        // console.log(this.itemBadgeIndicator)
+        this.itemBadgeIndicator = 'normal';
+        // console.log(this.itemBadgeIndicator)
       } else {
         produto.qtd_item = quantidade;
         this.itensCarrinho.push(produto);
+        this.itemBadgeIndicator = 'mudou';
+        // console.log(this.itemBadgeIndicator)
+        this.itemBadgeIndicator = 'normal';
+        // console.log(this.itemBadgeIndicator)
       }
     }
 
@@ -70,12 +77,17 @@ export class CarrinhoComprasService {
       produtoCarrinho => produtoCarrinho.id === produto.id
     );
     produtoADiminuir.qtd_item -= 1;
+    this.itemBadgeIndicator = 'mudou';
+      // console.log(this.itemBadgeIndicator)
+      this.itemBadgeIndicator = 'normal';
+      // console.log(this.itemBadgeIndicator)
     // console.log(produtoADiminuir);
 
     if (produtoADiminuir.qtd_item === 0) {
       let indiceRemover = this.itensCarrinho.indexOf(produtoADiminuir);
       this.itensCarrinho.splice(indiceRemover, 1);
       this.identificaLojasDiferentes = false;
+      this.itemBadgeIndicator = 'normal';
     }
 
     localStorage.setItem("itensCarrinho", JSON.stringify(this.itensCarrinho));
