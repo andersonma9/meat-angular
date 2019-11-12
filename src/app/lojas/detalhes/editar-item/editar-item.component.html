@@ -1,5 +1,6 @@
-<ng-container  *ngIf="!navigationStatus(); else loading">
-  <div @editarItensAppeard fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" style="margin-top: 10px; padding-bottom: 64px;">
+<ng-container *ngIf="!navigationStatus(); else loading">
+  <div @editarItensAppeard fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px"
+    style="margin-top: 10px; padding-bottom: 64px;">
     <div fxLayout="column" fxFlex="50" fxLayoutGap="10px">
       <ng-container *ngFor="let produto of produtos">
         <mat-card>
@@ -15,8 +16,21 @@
           </mat-card-actions>
         </mat-card>
       </ng-container>
+      <div fxLayoutGap="5px">
+        <button id="previous" (click)="previousPage()" mat-raised-button>
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <ng-container *ngFor="let pag of paginas">
+          <input id="value" type="text" style="display: none;" [value]="this.param">
+          <a (click)="nagivateToPage(pag)" mat-raised-button>{{ pag }}</a>
+        </ng-container>
+        <button id="next" (click)="nextPage()" mat-raised-button>
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
     </div>
-    <div fxLayout="column" fxFlex="50" *ngIf="produtoEditar !== null && produtoEditado === false; else noItemSelected" @itemInfoAppeard>
+    <div fxLayout="column" fxFlex="50" *ngIf="produtoEditar !== null && produtoEditado === false; else noItemSelected"
+      @itemInfoAppeard>
       <app-item-info [dadosProduto]="dadosProduto" [produtoEditar]="produtoEditar"
         (enviarProdutoEditado)="editarProduto($event)"></app-item-info>
     </div>
@@ -24,15 +38,15 @@
 </ng-container>
 
 <ng-template #loading>
- <app-loading></app-loading>
+  <app-loading></app-loading>
 </ng-template>
 
 <ng-template #noItemSelected>
-    <div @noItemSelected fxLayout="column" fxFlex="50">
-      <mat-card>
-        Por favor, selecione um item para editar
-      </mat-card>
-      </div>
+  <div @noItemSelected fxLayout="column" fxFlex="50">
+    <mat-card>
+      Por favor, selecione um item para editar
+    </mat-card>
+  </div>
 </ng-template>
 
 <form [formGroup]="dadosProduto" style="display: none;"></form>

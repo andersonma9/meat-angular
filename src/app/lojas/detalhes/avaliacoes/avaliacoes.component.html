@@ -1,1 +1,20 @@
-<p>avaliacoes works!</p>
+<ng-container>
+    <div fxLayout="row" fxLayoutGap="10px" style="margin-top: 10px;">
+        <ng-container *ngFor="let avaliacao of avaliacoes">
+            <div fxLayout="row wrap"  fxFlex="50">
+                <mat-card fxFlex="100" >
+                    <mat-card-title>
+                        {{avaliacao.rating}}
+                        <mat-icon>
+                            star
+                        </mat-icon>
+                    </mat-card-title>
+                    <mat-divider></mat-divider>
+                    <mat-card-content style="margin-top: 15px;">
+                        {{avaliacao.comentario}}
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </ng-container>
+    </div>
+</ng-container>

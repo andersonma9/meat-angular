@@ -1,20 +1,22 @@
 <div @listaAppeard id="itensContainer" fxLayout="row" fxLayout.lt-md="column">
   <div fxFlex="55" fxFlexOrder.lt-md="2">
-    <div *ngFor="let produto of produtos">
-      <div *ngIf="this.produtos.length !== 0">
+    <div *ngIf="this.produtos.length !== 0">
+      <div *ngFor="let produto of produtos">
         <app-itens [produto]="produto"></app-itens>
       </div>
-      <!-- <div *ngIf="this.produtos.length === 0">
-        Não há produtos cadastrados nessa loja
-      </div> -->
+    </div>
+    <div *ngIf="this.produtos.length === 0">
+      <mat-card>
+        Não conseguimos encontrar o que procura!
+      </mat-card>
     </div>
     <div>
-      <div fxLayoutGap="5px">
+      <div fxLayoutGap="5px" *ngIf="this.produtos.length !== 0">
         <button id="previous" (click)="previousPage()" mat-raised-button>
           <mat-icon>arrow_back</mat-icon>
         </button>
         <ng-container *ngFor="let pag of paginas">
-            <input id="value" type="text" style="display: none;" [value]="this.param">
+          <input id="value" type="text" style="display: none;" [value]="this.param">
           <a (click)="nagivateToPage(pag)" mat-raised-button>{{ pag }}</a>
         </ng-container>
         <button id="next" (click)="nextPage()" mat-raised-button>

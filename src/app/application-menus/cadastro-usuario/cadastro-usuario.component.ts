@@ -7,6 +7,8 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { CepService } from 'src/app/services/cep/cep.service';
 
 @Component({
   selector: "app-cadastro-usuario",
@@ -18,7 +20,8 @@ export class CadastroUsuarioComponent implements OnInit {
     private _cadastroUsuario: CadastroUsuarioService,
     private _fb: FormBuilder,
     private _sn: MatSnackBar,
-    private _router: Router
+    private _router: Router,
+    private _cepService: CepService
   ) {}
 
   cadastroForm: FormGroup;
@@ -47,6 +50,30 @@ export class CadastroUsuarioComponent implements OnInit {
         uf: this._fb.control("", [Validators.required, Validators.maxLength(2)])
       })
     });
+    this.getCep()
+  }
+
+  getCep() {
+    this.cadastroForm.get('endereco.cep').valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(
+      cep => {
+        console.log(cep)
+        this._cepService.getCepInfo(cep).pipe(
+          tap(cepInfo => {
+            this.cadastroForm.get('endereco.bairro').setValue(cepInfo.bairro)
+            this.cadastroForm.get('endereco.rua').setValue(cepInfo.logradouro)
+            this.cadastroForm.get('endereco.cidade').setValue(cepInfo.localidade)
+            this.cadastroForm.get('endereco.uf').setValue(cepInfo.uf)
+          })
+        ).subscribe(
+          cepInfo => {
+            
+          }
+        )
+      }
+    )
   }
 
   // receber foto de perfil

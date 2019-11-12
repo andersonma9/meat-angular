@@ -1,7 +1,14 @@
 <ng-container>
+  <div fxFlex="15" style="background: white; height: 100%; padding: 10px;">
+    <mat-selection-list #shoes>
+      <mat-list-option (click)="adicionarRemover(categoria)" *ngFor="let categoria of listaCategorias">
+        {{categoria.nome}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
   <div style="margin: auto;" fxLayout="column" fxFlex="70" fxFlex.lt-lg="100" class="container">
     <!-- <ng-container  *ngIf="!loadingStatus(); else loading"> -->
-      <div [@detalhesAppeard]>      
+    <div [@detalhesAppeard]>
       <mat-card fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign.lt-md="center center">
         <img style="border-radius: 50px 5px 5px 5px; width: 200px; height: 200px;" src="{{ loja.logo }}"
           fxFlexAlign="center" />
@@ -28,7 +35,8 @@
           <a mat-raised-button color="warn" [routerLink]="['cadastro-item']"
             routerLinkActive="router-link-active">Cadastrar Itens</a>
           <ng-container *ngIf="this._loginService.isLogged()">
-            <a mat-raised-button color="warn" [routerLink]="['editar-produtos']" routerLinkActive="router-link-active">
+            <a mat-raised-button color="warn" [routerLink]="['editar-produtos']" [queryParams]="{page:1}"
+              routerLinkActive="router-link-active">
               Editar Item
             </a>
           </ng-container>
@@ -37,19 +45,19 @@
 
       <nav mat-tab-nav-bar style="margin: 5px auto 0px auto; width: 100%; background-color: white; ">
         <a fxFlex="100" style="margin-right: auto;" color="primary" mat-stroked-button mat-tab-link
-          [routerLink]="['itens']"  routerLinkActive="active">Produtos</a>
+          [routerLink]="['itens']" routerLinkActive="active">Produtos</a>
         <a fxFlex="100" style="margin-left: auto;" color="primary" mat-stroked-button mat-tab-link
           [routerLink]="['avaliacoes']" routerLinkActive="active">Avaliações</a>
       </nav>
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="onActivate($event)"></router-outlet>
     </div>
     <!-- </ng-container> -->
   </div>
 </ng-container>
 
 
-<ng-template #loading >
-  <div >
-    <app-card-loading ></app-card-loading>
+<ng-template #loading>
+  <div>
+    <app-card-loading></app-card-loading>
   </div>
 </ng-template>

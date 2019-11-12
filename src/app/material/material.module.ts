@@ -25,6 +25,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 const MaterialImports = [
@@ -51,7 +53,9 @@ const MaterialImports = [
   MatSliderModule,
   MatBottomSheetModule,
   MatProgressBarModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

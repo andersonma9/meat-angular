@@ -1,15 +1,20 @@
-<ng-container *ngIf="!(lojas.length === 0); else errorContainer">
+<ng-container >
   <div [@lojasReady]="lojasTrigger" class="container">
+    <form [formGroup]="searchForm">
     <div class="cepDiv">
-      <mat-form-field color="primary" fxFlex.gt-sm="31" fxFlex.lt-sm="100" appearance="outline">
-        <mat-label>Pesquisar</mat-label>
-        <input matInput />
-        <mat-icon matSuffix>search</mat-icon>
-        <mat-hint>Filtre sua pesquisa aqui</mat-hint>
-      </mat-form-field>
-    </div>
-    <div style="border: 1px solid red;" class="divLojas" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
-      <div class="cardLoja" fxFlex="calc(32% - 10px)" *ngFor="let loja of lojas">
+        <mat-form-field color="primary" fxFlex.gt-sm="31" fxFlex.lt-sm="100" appearance="outline">
+          <mat-label>Pesquisar</mat-label>
+          <input matInput formControlName="pesquisa"  [matAutocomplete]="auto"/>
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-hint>Filtre sua pesquisa aqui</mat-hint>
+        </mat-form-field>
+      </div>
+    </form>
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
+      </mat-autocomplete>
+    <div *ngIf="!(lojas.length === 0); else errorContainer" class="divLojas" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="10px">
+      <div class="cardLoja" fxFlex="calc(32%-10px)" *ngFor="let loja of lojas">
         <mat-card fxFlex="100">
           <mat-card-header fxLayout="row" style="margin-top: 10px;">
             <img style="margin-left: 10px; margin-bottom: 10px;" src="{{ loja.logo }}" mat-card-avatar />
@@ -25,7 +30,7 @@
           </mat-card-actions>
         </mat-card>
       </div>
-      <div class="navigator" fxLayoutGap="5px">
+      <div fxFlex="100" fxLayoutAlign="end" class="navigator" fxLayoutGap="5px">
         <button id="previous" (click)="previousPage()" mat-raised-button>
           <mat-icon>arrow_back</mat-icon>
         </button>

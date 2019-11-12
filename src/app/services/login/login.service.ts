@@ -53,7 +53,7 @@ export class LoginService /* extends HeaderService */ {
           localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
          
           this.clienteInfo(loginResponse.cliente).subscribe(dados => {
-            console.log(dados)
+            // console.log(dados)
             this.userInfo = dados;
             localStorage.setItem("userInfo", JSON.stringify(this.userInfo));
           });

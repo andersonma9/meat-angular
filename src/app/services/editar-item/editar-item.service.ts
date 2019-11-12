@@ -18,8 +18,8 @@ export class EditarItemService {
     this.api = environment.apiUrl
   }
 
-  listaProdutos(idLoja): Observable<Array<ProdutosModel>> {
-    return this._httpClient.get<Array<ProdutosModel>>(`${this.api}/lojas/${idLoja}/produtos`);
+  listaProdutos(idLoja, pag?): Observable<ProdutosModel> {
+    return this._httpClient.get<ProdutosModel>(`${this.api}/lojas/${idLoja}/produtos`, {params: {page: pag}});
   }
 
 

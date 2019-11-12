@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterContentInit, AfterViewInit } from "@angular/core";
 import { EditarItemService } from "src/app/services/editar-item/editar-item.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProdutosModel } from "src/app/models/produtos.model";
@@ -11,6 +11,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: "app-editar-item",
@@ -49,7 +50,7 @@ import {
     ])
   ]
 })
-export class EditarItemComponent implements OnInit {
+export class EditarItemComponent implements OnInit, AfterViewInit {
   constructor(
     private readonly _editarItemService: EditarItemService,
     private _activatedRoute: ActivatedRoute,
@@ -70,7 +71,27 @@ export class EditarItemComponent implements OnInit {
 
   produtoEditado: boolean = false;
 
+  lojaId: string;
+
+  // paginação 
+
+  param: number;
+
+  paginas: Array<number> = [];
+
+  lastPage: number;
+
+
+  // paginação
+
   ngOnInit() {
+    this.lojaId = this._activatedRoute.parent.snapshot.params.id;
+
+    if (!this._activatedRoute.snapshot.queryParams.page) {
+      this.param = 1;
+    } else {
+      this.param = parseInt(this._activatedRoute.snapshot.queryParams.page);
+    }
 
     this.dadosProduto = this._fb.group({
       descricao: this._fb.control('', Validators.required),
@@ -81,11 +102,27 @@ export class EditarItemComponent implements OnInit {
     })
 
     const lojaId = this._activatedRoute.parent.snapshot.params["id"];
-    this._editarItemService.listaProdutos(lojaId).subscribe(produtos => {
-      // console.log(produtos);
-      this.produtos = produtos;
-    });
 
+    this.getListaProdutos(lojaId, this.param)
+
+  }
+  ngAfterViewInit() {
+
+  }
+
+  getListaProdutos(lojaId, param) {
+    this._editarItemService.listaProdutos(lojaId, param).pipe(
+      tap(res => {
+        if (this.paginas.length !== res.total_pages) {
+          for (let i = 1; i <= res.total_pages; i += 1) {
+            this.paginas.push(i)
+          }
+        }
+        this.lastPage = this.paginas.lastIndexOf(res.total_pages);
+      })
+    ).subscribe(produtos => {
+      this.produtos = produtos.results;
+    });
   }
 
   selecionaProduto(produto) {
@@ -98,28 +135,50 @@ export class EditarItemComponent implements OnInit {
       qtd_estoque: this.produtoEditar.qtd_estoque,
       valor: this.produtoEditar.valor
     })
-
-    // console.log(this.dadosProduto.value)
   }
 
 
 
   editarProduto(dadosProduto: ProdutosModel) {
-    this._editarItemService.editarItem(dadosProduto.id, dadosProduto).subscribe(
-      res => {
+    this._editarItemService.editarItem(dadosProduto.id, dadosProduto).pipe(
+      tap(res => {
         const lojaId = this._activatedRoute.parent.snapshot.params["id"];
         this._editarItemService.listaProdutos(lojaId).subscribe(produtos => {
-          // console.log(produtos);
-          this.produtos = produtos;
+          this.produtos = produtos.results;
         });
-      }
-    )
+      })
+    ).subscribe()
     this.produtoEditado = true;
-    // console.log(this.produtoEditado)
   }
 
   navigationStatus() {
     return this._navigationInfoService.navStart
   }
 
+  // métodos paginação
+  previousPage() {
+    if (this.param === 1) {
+      this._router.navigate(['loja', this.lojaId, 'editar-produtos'], { queryParams: { page: 1 } })
+    } else if (this.param > 1) {
+      this.param -= 1;
+      this._router.navigate(['loja', this.lojaId, 'editar-produtos'], { queryParams: { page: this.param } })
+      this.getListaProdutos(this.lojaId, this.param);
+    }
+  }
+
+  nextPage() {
+    if (this.param === (this.paginas[this.lastPage])) {
+      this._router.navigate(['loja', this.lojaId, 'editar-produtos'], { queryParams: { page: this.param } })
+    } else if (this.param < (this.paginas[this.lastPage])) {
+      this.param += 1;
+      this._router.navigate(['loja', this.lojaId, 'editar-produtos'], { queryParams: { page: this.param } })
+      this.getListaProdutos(this.lojaId, this.param);
+    }
+  }
+
+  nagivateToPage(pag) {
+    this.param = pag;
+    this._router.navigate(['loja', this.lojaId, 'editar-produtos'], { queryParams: { page: pag } })
+    this.getListaProdutos(this.lojaId, pag)
+  }
 }

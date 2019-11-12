@@ -7,5 +7,7 @@ export class ProdutosModel {
   qtd_estoque: number;
   length: number;
   logo: any;
-  results?: ProdutosModel;
+  results: Array<ProdutosModel>;
 }
+
+
