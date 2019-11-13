@@ -1,62 +1,21 @@
-<mat-drawer-container class="sidenavigation">
-  <mat-drawer class="sideNav" [mode]="mode" [opened]="opened">
-    <mat-accordion id="accordion">
-      <mat-expansion-panel class="expansionPanel">
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: white;">
-            Gestão Lojas
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <a mat-button [routerLink]="['/lojas/adicionar']" routerLinkActive="mat-accent">Adicionar Loja</a>
-        <mat-divider></mat-divider>
-        <mat-expansion-panel class="expansionPanel">
-          <mat-expansion-panel-header style="padding: 0 16px;">
-            <mat-panel-title style="color: white;">
-              Editar Loja
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div *ngFor="let loja of listaLojas">
-            <a mat-button [routerLink]="['/loja', loja.id, 'editar']"
-              routerLinkActive="mat-accent">{{ loja.nome_fantasia }}</a>
-            <mat-divider></mat-divider>
-          </div>
-          <button mat-raised-button color="accent" id="editAddButton" (click)="loadLojas()">Carregar mais Lojas</button>
-        </mat-expansion-panel>
-        <!-- <mat-divider></mat-divider> -->
+<mat-drawer-container class="side-container">
+  <mat-drawer [mode]="mode" [opened]="opened" class="side-drawer">
+    <div class="categories">
+      <div id="title">
+        navegue pelo site
+      </div>
 
-        <mat-divider></mat-divider>
-        <mat-expansion-panel class="expansionPanel">
-          <mat-expansion-panel-header style="padding: 0 16px;">
-            <mat-panel-title style="color: white;">
-              Cadastrar Produtos
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div *ngFor="let loja of listaLojas">
-            <a mat-button [routerLink]="['/loja', loja.id, 'cadastro-item']"
-              routerLinkActive="mat-accent">{{ loja.nome_fantasia }}</a>
-            <mat-divider></mat-divider>
-          </div>
-          <button mat-raised-button color="accent" id="cadastroAddButton" (click)="loadLojas()">Carregar mais Lojas</button>
-        </mat-expansion-panel>
-        <mat-divider></mat-divider>
-        <!-- </mat-expansion-panel> -->
-      </mat-expansion-panel>
-
-      <mat-expansion-panel class="expansionPanel">
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: white;">
-            Gestão Usuário
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <a mat-button [routerLink]="['/editar-perfil']" routerLinkActive="mat-accent">Editar Dados</a>
-        <mat-divider></mat-divider>
-        <a mat-button *ngIf="!loggedUser()" [routerLink]="['/cadastro']" routerLinkActive="mat-accen">Cadastrar
-          Usuário</a>
-        <mat-divider></mat-divider>
-      </mat-expansion-panel>
-    </mat-accordion>
+    </div>
+    <ul>
+      <li>a</li>
+      <li>a</li>
+      <li>a</li>
+      <li>a</li>
+      <li>a</li>
+      <li>a</li>
+    </ul>
   </mat-drawer>
-  <mat-drawer-content (click)="clickHandler()" class="routerOutlet">
+  <mat-drawer-content style="padding: 10px;" (click)="clickHandler()" class="main-content">
     <router-outlet> </router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

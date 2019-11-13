@@ -88,6 +88,8 @@ export class ApplicationMenusComponent implements OnInit {
       }
     });
   }
+  
+
 
   sideContentToggle() {
 

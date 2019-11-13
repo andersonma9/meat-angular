@@ -1,34 +1,87 @@
-
-<mat-toolbar class="mainToolbar" color="primary">
-  <mat-toolbar-row class="navigation">
-    <span>
-      <button (click)="sideContentToggle()" mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <a mat-button [routerLink]="['']">MEAT</a>
-      <a *ngIf="mediumScreen" mat-button [routerLink]="['/lojas']" routerLinkActive="active" >Lojas</a>
-      <a *ngIf="mediumScreen" [routerLink] = "['/sobre']" mat-button href="#">Sobre</a>
-    </span>
-    <!-- Adicionar NgIf pra caso o usuário exista -->
-    <div *ngIf="this._loginService.isLogged()">
-      <a mat-button [routerLink]="['/editar-perfil']" routerLinkActive="mat-accent" >{{ 'Bem-vindo (a), ' +  _loginService.userInfo.nome + ' ' + _loginService.userInfo.sobrenome }}</a>
-      |
-      <button mat-button (click)="logout()">Logout</button>
-    </div>
-    <div *ngIf="!this._loginService.isLogged()">
-      <button (click)="abrirDialogoLogin()" mat-button>Login</button>
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="primary-row">
+    <div class="main-div">
+      <div id="logo-span">
+        <div style="display: flex; flex-flow: row;">
+          <div *ngIf="!mediumScreen" style="width: 40px; padding-top: 2px;">
+            <button (click)="sideContentToggle()" disableRipple mat-icon-button><mat-icon>reorder</mat-icon></button>
+          </div>
+          <button style="display: hidden; padding: 0;" disableRipple mat-button>
+            <img id="logo" src="https://imagizer.imageshack.com/img921/3554/wQBpED.png" alt="">
+          </button>
+        </div>
+        <div class="search-wrap">
+          <input placeholder="tem tuuuudo, pode procurar :)" class="input" type="text" />
+          <button class="icon" mat-icon-button disableRipple>
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+        <div class="login-basket">
+          <div class="dropdown">
+            <div class="login-wrap">
+              <span class="icon-span">
+                <mat-icon class="login-icon">account_circle</mat-icon>
+              </span>
+              <div fxHide.lt-md id="login-text">
+                <span id="login-span1">olá, faça seu login</span>
+                <span id="login-span2">ou cadastre-se </span>
+              </div>
+              <mat-icon fxHide.lt-md id="arrow-down">keyboard_arrow_down</mat-icon>
+            </div>
+            <div class="dropdown-login">
+              <button mat-raised-button color="primary">Entrar</button>
+              <hr style="width: 100%;">
+              <button mat-raised-button color="accent">Cadastre-se</button>
+            </div>
+          </div>
+          <div class="basket">
+            <span class="icon-span">
+              <button disableRipple class="basket-button" mat-icon-button>
+                <mat-icon id="basket-icon">shopping_basket</mat-icon>
+                <span matBadge="0" id="badge-span"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </mat-toolbar-row>
-  
-  
-  <mat-toolbar-row id="secondaryRow" *ngIf="!smallScreen">
-      <mat-divider vertical></mat-divider>
-        <a mat-button [routerLink]="['/lojas']">Lojas</a>
-        <a mat-button [routerLink] = "['/sobre']">Sobre</a>
+
+  <mat-toolbar-row class="second-row" fxHide.lt-md>
+    <div class="main-div2">
+      <span style="width: auto;">
+        <div class="dropdown">
+          <button class="categories" mat-button style="background: transparent;">
+            <mat-icon class="list-icon" color="primary">reorder</mat-icon>
+            <span style="color: #b71c1c; font-size: 1.1rem;">todas as categorias</span>
+          </button>
+          <div class="dropdown-categories">
+            <a mat-button color="accent" style="width: 100%; text-align: left; color: #757575;" href="#">link1</a>
+            <a mat-button color="accent" style="width: 100%; text-align: left; color: #757575;" href="#">link1</a>
+            <a mat-button color="accent" style="width: 100%; text-align: left; color: #757575;" href="#">link1</a>
+            <a mat-button color="accent" style="width: 100%; text-align: left; color: #757575;" href="#">link1</a>
+            <a mat-button color="accent" style="width: 100%; text-align: left; color: #757575;" href="#">link1</a>
+            <a mat-button color="accent" style="width: 100%; text-align: left; color: #757575;" href="#">link1</a>
+          </div>
+        </div>
+      </span>
+      <div style="max-height: 40px; margin-left: 20px;" class="categories-row">
+        <a style="height: 100%; color: #757575; padding: 0 30px;" href="#" color="accent" mat-button>Categoria</a>
+        <a style="height: 100%; color: #757575; padding: 0 30px;" href="#" color="accent" mat-button>Categoria</a>
+        <a style="height: 100%; color: #757575; padding: 0 30px;" href="#" color="accent" mat-button>Categoria</a>
+        <a style="height: 100%; color: #757575; padding: 0 30px;" href="#" color="accent" mat-button>Categoria</a>
+        <a style="height: 100%; color: #757575; padding: 0 30px;" href="#" color="accent" mat-button>Categoria</a>
+        <a style="height: 100%; color: #757575; padding: 0 30px;" href="#" color="accent" mat-button>Categoria</a>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<!-- <ng-container *ngIf="this._navigationInfoService.navigationStatus()">
-    <mat-progress-bar color='warn' mode="indeterminate"></mat-progress-bar>
-  </ng-container> -->
 
-<app-side-menu [opened]="opened" [mode] = "mode" (reflectOpened)="reflectOpened()"></app-side-menu>
+<ng-container *ngIf="!mediumScreen; else normalOutlet">
+  <app-side-menu [opened]="opened" [mode] = "mode" (reflectOpened)="reflectOpened()"></app-side-menu>
+
+</ng-container>
+
+<ng-template #normalOutlet>
+  <router-outlet></router-outlet>
+</ng-template>
